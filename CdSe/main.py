@@ -18,12 +18,12 @@ st.markdown('****')
 st.markdown('****')
 
 #Creating questions with multiple choice answer
-RADIO_QUESTIONS_LIST = ['What is your cadmium source?',
-                        'What is your carboxylic acid source?',
-                        'What is your amine source?',
-                        'What is your phosphine source?',
-                        'What is your first solvent?',
-                        'What is your second solvent?'
+RADIO_QUESTIONS_LIST = ['1. What is your cadmium source?',
+                        '2. What is your carboxylic acid source?',
+                        '3. What is your amine source?',
+                        '4. What is your phosphine source?',
+                        '5. What is your first solvent?',
+                        '6. What is your second solvent?'
                         ]
 #Creating multiple choice answers for each question above
 RADIO_SELECTIONS = [['cadmium stearate', 'cadmium oxide', 'dimethylcadmium',
@@ -42,15 +42,15 @@ RADIO_SELECTIONS = [['cadmium stearate', 'cadmium oxide', 'dimethylcadmium',
                     ['None', 'phosphinic acid', 'trioctylphosphine oxide']
                     ]
 #Creating questions with slider
-SLIDER_QUESTIONS_LIST = ['How much Cadmium do you plan to use? (mmol)',
-                         'Selenium power is used; how much Selenium do you plan to use? (mmol)',
-                         'How much carboxylic acid  do you plan to use? (mmol)',
-                         'How much amine do you plan to use? (mmol)',
-                         'How much phosphine do you plan to use? (mmol)',
-                         'How much first solvent do you plan to use? (g)',
-                         'How much second solvent do you plan to use? (g)',
-                         'What is the growth temperature? (Degree Celsius)',
-                         'How long do you plan to grow the quantum dots (minute)?'
+SLIDER_QUESTIONS_LIST = ['7. How much Cadmium do you plan to use? (mmol)',
+                         '8. Selenium power is used; how much Selenium do you plan to use? (mmol)',
+                         '9. How much carboxylic acid  do you plan to use? (mmol)',
+                         '10. How much amine do you plan to use? (mmol)',
+                         '11. How much phosphine do you plan to use? (mmol)',
+                         '12. How much first solvent do you plan to use? (g)',
+                         '13. How much second solvent do you plan to use? (g)',
+                         '14. What is the growth temperature? (Degree Celsius)',
+                         '15. How long do you plan to grow the quantum dots (minute)?'
                          ]
 #Creating sliders for each question above
 SLIDER_SELECTIONS = [[0.1, 14.0, 0.15, 0.001],
