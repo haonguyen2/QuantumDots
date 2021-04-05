@@ -7,6 +7,49 @@ import pandas as pd
 import streamlit as st
 import pathlib
 
+st.title('InP Quantum Dots Synthesis Project  - The Cossairt Lab')
+
+st.header('Data Input')
+
+st.markdown('In this section, you will input synthetic conditions and some properties of the quantum dots.')
+st.markdown('First, you will need to paste the DOI of the paper you are about to use. Check if someone has already inputted that paper.')
+st.markdown('Type "None" if the paper doesn\'t provide the information')
+
+DOI = st.text_input(label='1. Type or paste a DOI name into the text box below. E.g. 10.1000/xyz123')
+
+In_source = st.text_input(label='2. What is the indium source?')
+
+In_amount = st.slider('3. How much In source is used? (mmol)', 0, 130, 25)
+
+P_source = st.text_input(label='4. What is the phosphorus source?')
+
+P_amount = st.slider('5. How much phosphorus source is used? (mmol)', 0, 130, 25)
+
+Sol_1 = st.text_input(label='6. What is the first solvent?')
+
+Sol_1_am = st.slider('7. How much of the first solvent is used? (mg)', 0, 130, 25)
+
+Sol_2 = st.text_input(label='8. What is the second solvent?')
+
+Sol_2_am = st.slider('9. How much of the second is used? (mg)', 0, 130, 25)
+
+Acid_source = st.text_input(label='10. What acid is used?')
+
+Acid_amount = st.slider('11. How much acid is used? (mmol)', 0, 130, 25)
+
+Amine_source = st.text_input(label='12. What amine is used?')
+
+Amine_amount = st.slider('13. How much amine is used? (mmol)', 0, 130, 25)
+
+Temp = st.slider('14. What is the growth temperature? (Celcius)', 0, 130, 25)
+
+Time = st.slider('15. What is the growth time? (minute)', 0, 130, 25)
+
+Abs = st.slider('16. What is the reported absorbance max? (nm)', 0, 130, 25)
+
+Emis = st.slider('17. What is the reported emission? (nm)', 0, 130, 25)
+
+
 # Creating questions with multiple choice answer
 RADIO_QUESTIONS_LIST = ['What is your cadmium source?',
                         'What is your carboxylic acid source?',
@@ -76,31 +119,32 @@ def get_slider_input(question, mmin_val, max_val, default_val, interval):
     return answer
 
 
-# Get DOI
-DOI_FILE_NAME = 'doi_list.txt'
-DEFAULT_DOI = '10.1000/xyz123\n'
-#  check if file not exist
-if not pathlib.Path(DOI_FILE_NAME).exists():
-    with open(DOI_FILE_NAME, 'w') as fp:
-        pass
-with open(DOI_FILE_NAME, 'r+') as f:
-    doi_lists = f.readlines()
+# # Get DOI
+# DOI_FILE_NAME = 'doi_list.txt'
+# DEFAULT_DOI = '10.1000/xyz123\n'
+# #  check if file not exist
+# if not pathlib.Path(DOI_FILE_NAME).exists():
+#     with open(DOI_FILE_NAME, 'w') as fp:
+#         pass
+# with open(DOI_FILE_NAME, 'r+') as f:
+#     doi_lists = f.readlines()
 
-current_doi = st.text_input(label='Type or paste a DOI name, e.g., 10.1000/xyz123, into the text box below',
-                            value=DEFAULT_DOI,
-                            help='Be sure to enter all of the '
-              'characters before and after the slash. Do not include extra characters, or sentence punctuation '
-              'marks.')
-if current_doi != DEFAULT_DOI:
-    current_doi += '\n'
-st.write(doi_lists)
-if current_doi in doi_lists and current_doi != DEFAULT_DOI:
-    st.write(f'The paper with this DOI "{current_doi}" has already been submitted.')
-# elif current_doi != DEFAULT_DOI:
-with open(DOI_FILE_NAME, 'a') as f:
-    f.write(current_doi)
-    f.close()
-# List of answers for multiple choice questions
+# # current_doi = st.text_input(label='Type or paste a DOI name, e.g., 10.1000/xyz123, into the text box below',
+# #                             value=DEFAULT_DOI,
+# #                             help='Be sure to enter all of the '
+# #               'characters before and after the slash. Do not include extra characters, or sentence punctuation '
+# #               'marks.')
+# # if current_doi != DEFAULT_DOI:
+# #     current_doi += '\n'
+# # st.write(doi_lists)
+# # if current_doi in doi_lists and current_doi != DEFAULT_DOI:
+# #     st.write(f'The paper with this DOI "{current_doi}" has already been submitted.')
+# # # elif current_doi != DEFAULT_DOI:
+# # with open(DOI_FILE_NAME, 'a') as f:
+# #     f.write(current_doi)
+# #     f.close()
+# # List of answers for multiple choice questions
+
 for i in range(len(RADIO_QUESTIONS_LIST)):
     radio_answers.append(get_radio_input(
         RADIO_QUESTIONS_LIST[i], RADIO_SELECTIONS[i]))

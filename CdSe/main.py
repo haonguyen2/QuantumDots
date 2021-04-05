@@ -155,10 +155,10 @@ st.markdown('****')
 st.markdown('****')
 
 st.write('Predicted diameter is', round(predicted[0, 0], 3))
-st.write(' Predicted absorbance max is', round(predicted[0, 1], 3))
-st.write(' Predicted emission is', round(predicted[0, 2], 3))
+st.write('Predicted absorbance max is', round(predicted[0, 1], 3))
+st.write('Predicted emission is', round(predicted[0, 2], 3))
 
 
 
 st.subheader('Updated 04/04/2021')
-
+st.write('Contact: haon02@uw.edu')
