@@ -108,7 +108,7 @@ user_df = pd.DataFrame(np.array(user_input).reshape(1, -1), columns=['Growth Tem
 st.write(user_df)
 
 #Scaling and encoding user input using the raw dataset
-df = pd.read_csv('CdSe.csv')
+df = pd.read_csv('CdSe/CdSe.csv')
 
 #Separate out initial DataFrame into the input features and output features
 df_input = df.drop(columns =['Injection Temp (Celsius)', 'Metal_amount (g)',
