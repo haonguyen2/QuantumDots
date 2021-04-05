@@ -147,7 +147,7 @@ X = ct.transform(user_df)
 #Load and use ExtraTrees ML model to predict outcomes
 load_Extra_Trees = joblib.load('CdSe/Extra_Trees.joblib')
 predicted = load_Extra_Trees.predict(X)
-st.markdown(<hr />)
+st.markdown('===')
 st.write('Predicted diameter is', round(predicted[0, 0], 3))
 st.write(' Predicted absorbance max is', round(predicted[0, 1], 3))
 st.write(' Predicted emission is', round(predicted[0, 2], 3))
