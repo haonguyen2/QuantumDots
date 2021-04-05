@@ -108,7 +108,7 @@ user_df = pd.DataFrame(np.array(user_input).reshape(1, -1), columns=['Growth Tem
 st.write(user_df)
 
 #Scaling and encoding user input using the raw dataset
-df = pd.read_csv('hotdots/Streamlit_UI/CdSe_BetterthanRaw.csv')
+df = pd.read_csv('CdSe/CdSe_BetterthanRaw.csv')
 
 #Separate out initial DataFrame into the input features and output features
 df_input = df.drop(columns =['Injection Temp (Celsius)', 'Metal_amount (g)',
@@ -140,7 +140,7 @@ ct.fit_transform(df_input)
 X = ct.transform(user_df)
 
 #Load and use ExtraTrees ML model to predict outcomes
-load_Extra_Trees = joblib.load('hotdots/Streamlit_UI/Extra_Trees.joblib')
+load_Extra_Trees = joblib.load('CdSe/Extra_Trees.joblib')
 predicted = load_Extra_Trees.predict(X)
 st.write('Predicted diameter is', round(predicted[0, 0], 3))
 st.write(' Predicted absorbance max is', round(predicted[0, 1], 3))
