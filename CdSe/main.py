@@ -9,6 +9,15 @@ import streamlit as st
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 
+
+st.title('InP Quantum Dots Synthesis Project  - The Cossairt Lab')
+
+st.header('Data Input')
+
+st.markdown('In this section, you will input synthetic conditions and some properties of the quantum dots.')
+st.markdown('First, you will need to paste the DOI of the paper you are about to use. Check if someone has already inputted that paper.')
+st.markdown('Type "None" if the paper doesn\'t provide the information')
+
 #Creating questions with multiple choice answer
 RADIO_QUESTIONS_LIST = ['What is your cadmium source?',
                         'What is your carboxylic acid source?',
