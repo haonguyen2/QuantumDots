@@ -10,7 +10,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 
 
-st.title('CdSe Quantum Dots Synthesis Project  - The Cossairt Lab')
+st.title('CdSe Quantum Dots Synthesis Project  - Cossairt Laboratory')
 
 st.header('Predicting Properties of CdSe Quantum Dots')
 
