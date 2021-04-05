@@ -15,6 +15,7 @@ st.title('CdSe Quantum Dots Synthesis Project  - Cossairt Laboratory')
 st.header('Predicting Properties of CdSe Quantum Dots')
 
 st.markdown('****')
+st.write('Answer the questions below about your CdSe quandum dots synthesis and we will predict the diameter, absorbance max, and emission wavelength of your dots.')
 st.markdown('****')
 
 #Creating questions with multiple choice answer
