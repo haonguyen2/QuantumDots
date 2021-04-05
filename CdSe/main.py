@@ -10,13 +10,9 @@ from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 
 
-st.title('InP Quantum Dots Synthesis Project  - The Cossairt Lab')
+st.title('CdSe Quantum Dots Synthesis Project  - The Cossairt Lab')
 
-st.header('Data Input')
-
-st.markdown('In this section, you will input synthetic conditions and some properties of the quantum dots.')
-st.markdown('First, you will need to paste the DOI of the paper you are about to use. Check if someone has already inputted that paper.')
-st.markdown('Type "None" if the paper doesn\'t provide the information')
+st.header('Predicting Properties of CdSe Quantum Dots')
 
 #Creating questions with multiple choice answer
 RADIO_QUESTIONS_LIST = ['What is your cadmium source?',
@@ -154,3 +150,8 @@ predicted = load_Extra_Trees.predict(X)
 st.write('Predicted diameter is', round(predicted[0, 0], 3))
 st.write(' Predicted absorbance max is', round(predicted[0, 1], 3))
 st.write(' Predicted emission is', round(predicted[0, 2], 3))
+
+
+
+st.title('Updated 04/04/2021')
+
