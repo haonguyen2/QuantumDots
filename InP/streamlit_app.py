@@ -7,47 +7,99 @@ import pandas as pd
 import streamlit as st
 import pathlib
 
-st.title('InP Quantum Dots Synthesis Project  - The Cossairt Lab')
+st.title('InP Quantum Dots Synthesis Project  - Cossairt Laboratory')
+st.subheader('Department of Chemistry - University of Washington')
+
+
+User = st.text_input(label='0. What\'s your name?')
+st.markdown('****')
 
 st.header('Data Input')
+st.markdown(
+    'In this section, you will input synthetic conditions and some properties of the quantum dots.')
+st.markdown(
+    'First, you will need to paste the DOI of the paper you are about to use. Check if someone has already inputted that paper.')
+st.markdown('****')
 
-st.markdown('In this section, you will input synthetic conditions and some properties of the quantum dots.')
-st.markdown('First, you will need to paste the DOI of the paper you are about to use. Check if someone has already inputted that paper.')
+st.markdown('Please enter EVERYTHING in lowercase!')
 st.markdown('Type "None" if the paper doesn\'t provide the information')
+st.markdown('****')
 
-DOI = st.text_input(label='1. Type or paste a DOI name into the text box below. E.g. 10.1000/xyz123')
+DOI = st.text_input(
+    label='1. Type or paste a DOI name into the text box below. E.g. 10.1000/xyz123')
+st.markdown('****')
 
+#DOI input
+# Rearange users' choice into a list to input to the ML model
+doi_input = [DOI, User]
+
+doi_df = pd.DataFrame(np.array(doi_input).reshape(1, -1), columns=['DOI', 'User'])
+
+st.write(doi_df)
+
+DOI_LIST = 'doi_list.csv'
+st.write(pd.read_csv(DOI_LIST))
+if st.button('Check your DOI'):
+    st.write(doi_df)
+#     if pathlib.Path(DOI_LIST).exists():
+#         doi_df.to_csv(DOI_LIST, mode='a', header=False)
+#         st.write('This paper has already been input.')
+#     else:
+#         doi_df.to_csv(DOI_LIST, mode='a', header=True)
+#         st.write('DOI list is updated')
+
+
+# st.write(pd.read_csv(DOI_LIST))
+
+
+
+st.markdown('****')
 In_source = st.text_input(label='2. What is the indium source?')
-
-In_amount = st.slider('3. How much In source is used? (mmol)', 0, 130, 25)
+In_amount = st.slider('3. How much In source is used? (mmol)', 0, 150, 25)
+st.markdown('****')
 
 P_source = st.text_input(label='4. What is the phosphorus source?')
-
-P_amount = st.slider('5. How much phosphorus source is used? (mmol)', 0, 130, 25)
+P_amount = st.slider('5. How much phosphorus source is used? (mmol)', 0, 150, 25)
+st.markdown('****')
 
 Sol_1 = st.text_input(label='6. What is the first solvent?')
-
-Sol_1_am = st.slider('7. How much of the first solvent is used? (mg)', 0, 130, 25)
+Sol_1_am = st.slider('7. How much of the first solvent is used? (mg)', 10, 1000, 100)
+st.markdown('****')
 
 Sol_2 = st.text_input(label='8. What is the second solvent?')
-
-Sol_2_am = st.slider('9. How much of the second is used? (mg)', 0, 130, 25)
+Sol_2_am = st.slider('9. How much of the second is used? (mg)', 10, 1000, 100)
+st.markdown('****')
 
 Acid_source = st.text_input(label='10. What acid is used?')
-
-Acid_amount = st.slider('11. How much acid is used? (mmol)', 0, 130, 25)
+Acid_amount = st.slider('11. How much acid is used? (mmol)', 0, 150, 25)
+st.markdown('****')
 
 Amine_source = st.text_input(label='12. What amine is used?')
+Amine_amount = st.slider('13. How much amine is used? (mmol)', 0, 150, 25)
+st.markdown('****')
 
-Amine_amount = st.slider('13. How much amine is used? (mmol)', 0, 130, 25)
+Other1 = st.text_input(label='14. Other compound 1')
+Other1_amount = st.slider('15. Amount? (mmol)', 0, 130, 25)
+st.markdown('****')
 
-Temp = st.slider('14. What is the growth temperature? (Celcius)', 0, 130, 25)
+Other2 = st.text_input(label='16. Other compound 2')
+Other2_amount = st.slider('17. Amount? (mmol)', 0, 130, 25)
+st.markdown('****')
 
-Time = st.slider('15. What is the growth time? (minute)', 0, 130, 25)
+Temp = st.slider('14. What is the growth temperature? (Celcius)', 30, 400, 200)
+st.markdown('****')
 
-Abs = st.slider('16. What is the reported absorbance max? (nm)', 0, 130, 25)
+Time = st.text_input(label='15. What is the growth time? (minute)')
+st.markdown('****')
 
-Emis = st.slider('17. What is the reported emission? (nm)', 0, 130, 25)
+Dia = st.slider('16. What is the reported diameter? (nm)', 0.0, 15.0, 2.0, 0.1)
+Abs = st.slider('17. What is the reported absorbance max? (nm)', 400, 700, 500)
+Em = st.slider('18. What is the reported emission? (nm)', 400, 700, 500)
+
+
+
+
+
 
 
 # Creating questions with multiple choice answer
@@ -122,6 +174,7 @@ def get_slider_input(question, mmin_val, max_val, default_val, interval):
 # # Get DOI
 # DOI_FILE_NAME = 'doi_list.txt'
 # DEFAULT_DOI = '10.1000/xyz123\n'
+
 # #  check if file not exist
 # if not pathlib.Path(DOI_FILE_NAME).exists():
 #     with open(DOI_FILE_NAME, 'w') as fp:
@@ -134,16 +187,20 @@ def get_slider_input(question, mmin_val, max_val, default_val, interval):
 # #                             help='Be sure to enter all of the '
 # #               'characters before and after the slash. Do not include extra characters, or sentence punctuation '
 # #               'marks.')
+
 # # if current_doi != DEFAULT_DOI:
 # #     current_doi += '\n'
 # # st.write(doi_lists)
 # # if current_doi in doi_lists and current_doi != DEFAULT_DOI:
 # #     st.write(f'The paper with this DOI "{current_doi}" has already been submitted.')
-# # # elif current_doi != DEFAULT_DOI:
-# # with open(DOI_FILE_NAME, 'a') as f:
-# #     f.write(current_doi)
-# #     f.close()
-# # List of answers for multiple choice questions
+# # elif current_doi != DEFAULT_DOI:
+# #     with open(DOI_FILE_NAME, 'a') as f:
+# #         f.write(current_doi)
+# #         f.close()
+
+
+
+# List of answers for multiple choice questions
 
 for i in range(len(RADIO_QUESTIONS_LIST)):
     radio_answers.append(get_radio_input(
