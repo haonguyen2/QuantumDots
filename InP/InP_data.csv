@@ -1,8 +1,2 @@
-,Growth Temp (Celsius),Metal_source,Metal_mmol (mmol),Chalcogen_mmol (mmol),Carboxylic_Acid,CA_mmol (mmol),Amines,Amines_mmol (mmol),Phosphines,Phosphines_mmol (mmol),Solvent I,S_I_amount (g),Solvent II,S_II_amount (g),Time_min (min)
-0,200.0,cadmium oxide,0.15,0.01,lauric acid,10.0,dodecylamine,1.0,triphenylphosphine,1.0,octadecene,10.0,phosphinic acid,10.0,50.0
-0,200.0,cadmium oxide,0.15,0.01,lauric acid,10.0,dodecylamine,1.0,triphenylphosphine,1.0,octadecene,10.0,phosphinic acid,10.0,209.0
-0,200.0,cadmium stearate,0.15,0.01,None,10.0,None,1.0,None,1.0,None,10.0,None,10.0,50.0
-0,200.0,cadmium stearate,0.15,0.01,None,10.0,None,1.0,None,1.0,None,10.0,None,10.0,75.5
-0,99.0,cadmium stearate,0.15,0.01,None,10.0,None,1.0,None,1.0,None,10.0,None,10.0,75.5
-0,99.0,cadmium stearate,0.15,0.01,None,10.0,None,1.0,None,1.0,None,10.0,None,10.0,75.5
-0,200.0,cadmium acetate dihydrate,0.15,0.01,None,10.0,None,1.0,None,1.0,None,10.0,None,10.0,50.0
+User,DOI,In_source,In_amount_mmol,P_source,P_amount_mmol,First_sol,First_sol_amount_mg,Second_sol,Second_sol_amount_mg,Acid,Acid_amount_mmol,Amine,Amine_amount_mmol,Other_1,Other_1_amount_mmol,Other_2,Other_2_amount_mmol,Temp_C,Time_min,diameter_nm,Abs_nm,Emission_nm,PLQY_percentage
+Hao,test,in_source,17,psource,12,solvent,15,None,0,acid,19,amine,15,othercompund ,3mg,None,None,199,20,1.6,17,35,15
