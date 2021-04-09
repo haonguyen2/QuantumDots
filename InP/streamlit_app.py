@@ -1,11 +1,12 @@
 """
 This is where the user interface is made using the streamlit package.
 """
-
+import base64
 import numpy as np
 import pandas as pd
 import streamlit as st
 import pathlib
+
 
 #Title
 st.title('InP Quantum Dots Synthesis Project  - Cossairt Laboratory')
