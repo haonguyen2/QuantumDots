@@ -144,7 +144,7 @@ st.write('Updated 04/08/2021')
 
 download=st.button('Download Excel File')
 if download:
-    csv = 'InP/InP_data.csv'
+    csv = pd.read_csv('InP/InP_data.csv')
     b64 = base64.b64encode(csv.encode()).decode() 
-    linko= f'<a href="data:file/csv;base64,{b64}" download="myfilename.csv">Download csv file</a>'
+    linko= f'<a href="data:file/csv;base64,{b64}" download="InP.csv">Download csv file</a>'
     st.markdown(linko, unsafe_allow_html=True)
