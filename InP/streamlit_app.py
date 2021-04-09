@@ -143,11 +143,7 @@ st.write('Updated 04/08/2021')
 
 download=st.button('Download Excel File')
 if download:
-      liste= ['A','B','C']
-      df_download= pd.DataFrame(liste)
-      df_download.columns=['Title']
-      df_download
-      csv = df_download.to_csv(index=False)
-      b64 = base64.b64encode(csv.encode()).decode() 
-      linko= f'<a href="data:file/csv;base64,{b64}" download="myfilename.csv">Download csv file</a>'
-      st.markdown(linko, unsafe_allow_html=True)
+    csv = 'InP/InP_data.csv'
+    b64 = base64.b64encode(csv.encode()).decode() 
+    linko= f'<a href="data:file/csv;base64,{b64}" download="myfilename.csv">Download csv file</a>'
+    st.markdown(linko, unsafe_allow_html=True)
