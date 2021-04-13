@@ -140,24 +140,24 @@ df = pd.read_csv('InP/InP_dataset.csv')
 
 st.write(df)
 
-# #Download Button
+#Download Button
 
-# def get_table_download_link(df):
-#     """Generates a link allowing the data in a given panda dataframe to be downloaded
-#     in:  dataframe
-#     out: href string
-#     """
-#     csv = df.to_csv(index=True)
-#     b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
-#     href = f'<a href="data:file/csv;base64,{b64}" download="hot injection.csv">Download csv file</a>'
-#     return href
+def get_table_download_link(df):
+    """Generates a link allowing the data in a given panda dataframe to be downloaded
+    in:  dataframe
+    out: href string
+    """
+    csv = df.to_csv(index=True)
+    b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
+    href = f'<a href="data:file/csv;base64,{b64}" download="hot injection.csv">Download csv file</a>'
+    return href
 
 
-# def render_download_link(df):
-#         st.markdown(get_table_download_link(df))
+def render_download_link(df):
+        st.markdown(get_table_download_link(df))
 
-# df = 
-# render_download_link(df)
+df = 
+render_download_link(df)
 
 
 st.write('Please let Hao know if something needs to be fixed')
