@@ -156,7 +156,6 @@ def get_table_download_link(df):
 def render_download_link(df):
         st.markdown(get_table_download_link(df))
 
-df = 
 render_download_link(df)
 
 
