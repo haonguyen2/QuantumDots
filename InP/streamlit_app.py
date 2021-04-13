@@ -58,20 +58,20 @@ In_source = st.text_input(label='2. What is the indium source?')
 In_amount = st.slider('3. How much In source is used? (mmol)', 0, 150, 0)
 st.markdown('****')
 
-P_source = st.text_input(label='4. What is the phosphorus source?')
-P_amount = st.slider('5. How much phosphorus source is used? (mmol)', 0, 150, 0)
+Acid_source = st.text_input(label='4. What acid is used?')
+Acid_amount = st.slider('5. How much acid is used? (mmol)', 0, 150, 0)
 st.markdown('****')
 
-Sol_1 = st.text_input(label='6. What is the first solvent?')
-Sol_1_amount = st.slider('7. How much of the first solvent is used? (mg)', 10, 1000, 0)
+P_source = st.text_input(label='6. What is the phosphorus source?')
+P_amount = st.slider('7. How much phosphorus source is used? (mmol)', 0, 150, 0)
 st.markdown('****')
 
-Sol_2 = st.text_input(label='8. What is the second solvent?')
-Sol_2_amount = st.slider('9. How much of the second is used? (mg)', 10, 1000, 0)
+Sol_1 = st.text_input(label='8. What is the first solvent?')
+Sol_1_amount = st.slider('9. How much of the first solvent is used? (mL)', 0, 600, 0)
 st.markdown('****')
 
-Acid_source = st.text_input(label='10. What acid is used?')
-Acid_amount = st.slider('11. How much acid is used? (mmol)', 0, 150, 0)
+Sol_2 = st.text_input(label='10. What is the second solvent?')
+Sol_2_amount = st.slider('11. How much of the second is used? (mL)', 0, 600, 0)
 st.markdown('****')
 
 Amine_source = st.text_input(label='12. What amine is used?')
