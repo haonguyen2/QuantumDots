@@ -138,6 +138,8 @@ st.markdown('****')
 
 df = pd.read_csv('InP/InP_dataset.csv')
 
+st.write(df)
+
 # #Download Button
 
 # def get_table_download_link(df):
