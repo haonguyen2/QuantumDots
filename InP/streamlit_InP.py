@@ -44,7 +44,7 @@ doi_input = [DOI, User]
 doi_df = pd.DataFrame(np.array(doi_input).reshape(1, -1), columns=['DOI', 'User'])
 
 #Check if doi exists in current doi list and deposit new doi
-df = pd.read_csv('InP/doi2.csv')
+df = pd.read_csv('InP/doi.csv')
 
 st.write('Your DOI:')
 st.write(doi_df)
@@ -52,11 +52,11 @@ if st.button('Check your DOI'):
     if (df['DOI'] == DOI).any():
         st.markdown('**This paper has already been used. Please make sure NOT to repeat entries!**')
     else:
-        doi_df.to_csv('InP/doi2.csv', mode='a', header=False, index=False)
+        doi_df.to_csv('InP/doi.csv', mode='a', header=False, index=False)
         st.markdown('**DOI list is updated**') 
 
 st.write('Current DOI list:')
-st.write(pd.read_csv('InP/doi2.csv'))
+st.write(pd.read_csv('InP/doi.csv'))
 
 #Questions for synthetic conditions
 
@@ -137,14 +137,14 @@ st.write(user_df)
 st.write('Click submit when you\'re done')
 
 if st.button('Submit Data'):
-    user_df.to_csv('InP/InP_data2.csv', mode='a', header=False, index=False)
+    user_df.to_csv('InP/InP_data.csv', mode='a', header=False, index=False)
     st.markdown('***Data submitted!***')
 
 st.write('Current InP data:')
-st.write(pd.read_csv('InP/InP_data2.csv'))
+st.write(pd.read_csv('InP/InP_data.csv'))
 st.markdown('****')
 
-df = pd.read_csv('InP/InP_data2.csv')
+df = pd.read_csv('InP/InP_data.csv')
 
 csv = df.to_csv(index=False)
 
