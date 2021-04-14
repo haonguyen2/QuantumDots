@@ -7,6 +7,10 @@ import pandas as pd
 import streamlit as st
 import pathlib
 
+from datetime import date
+
+today = date.today()
+
 
 #Title
 st.title('InP Quantum Dots Synthesis Project  - Cossairt Laboratory')
@@ -110,7 +114,7 @@ st.markdown('****')
 user_input = [ User, DOI, In_source, In_amount, P_source, P_amount, Sol_1, Sol_1_amount, 
                Sol_2, Sol_2_amount, Acid_source, Acid_amount, Amine_source, 
                Amine_amount, Other1, Other1_amount, Other2, Other2_amount, 
-               Temp, Time, Diameter, Abs, Emission, PLQY  
+               Temp, Time, Diameter, Abs, Emission, PLQY, today  
              ]
 
 user_df = pd.DataFrame(np.array(user_input).reshape(1, -1), columns=[
@@ -119,7 +123,7 @@ user_df = pd.DataFrame(np.array(user_input).reshape(1, -1), columns=[
         'Acid',	'Acid_amount_mmol',	'Amine',	'Amine_amount_mmol',
         'Other_1',	'Other_1_amount_mmol',	'Other_2',	'Other_2_amount_mmol',
         'Temp_C',	'Time_min',	'diameter_nm',	'Abs_nm',	'Emission_nm',	
-        'PLQY_percentage'                           ])
+        'PLQY_percentage', 'Date input'                           ])
 
 
 
