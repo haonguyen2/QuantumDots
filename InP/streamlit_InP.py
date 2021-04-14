@@ -21,7 +21,7 @@ st.header('Data Input')
 st.markdown(
     'In this section, you will input synthetic conditions and some properties of the quantum dots.')
 st.markdown(
-    'First, you will need to paste the DOI of the paper you are about to use. Check if someone has already inputted that paper.')
+    'First, you will need to paste the DOI of the paper you are about to use. Check if someone has already input that paper.')
 st.markdown('****')
 
 st.markdown('Please enter EVERYTHING in lowercase!')
@@ -42,10 +42,11 @@ doi_df = pd.DataFrame(np.array(doi_input).reshape(1, -1), columns=['DOI', 'User'
 #Check if doi exists in current doi list and deposit new doi
 df = pd.read_csv('InP/doi2.csv')
 
+st.write('Your DOI:')
 st.write(doi_df)
 if st.button('Check your DOI'):
     if (df['DOI'] == DOI).any():
-        st.markdown('**This paper has already been used. Please double check!**')
+        st.markdown('**This paper has already been used. Please make sure NOT to repeat entries!**')
     else:
         doi_df.to_csv('InP/doi2.csv', mode='a', header=False, index=False)
         st.markdown('**DOI list is updated**') 
@@ -54,50 +55,52 @@ st.write('Current DOI list:')
 st.write(pd.read_csv('InP/doi2.csv'))
 
 #Questions for synthetic conditions
+
+
 st.markdown('****')
-In_source = st.text_input(label='2. What is the indium source?')
-In_amount = st.slider('3. How much In source is used? (mmol)', 0, 150, 0)
+In_source = st.text_input(label='2. What is the indium source? (e.g. indium acetate, indium chloride, etc.)')
+In_amount = st.text_input(label='3. How much In source is used? (mmol)')
 st.markdown('****')
 
-Acid_source = st.text_input(label='4. What acid is used?')
-Acid_amount = st.slider('5. How much acid is used? (mmol)', 0, 150, 0)
+Acid_source = st.text_input(label='4. What acid is used? (e.g. lauric acid, mystiric acid, palmetic acid, etc.)')
+Acid_amount =  st.text_input(label='5. How much acid is used? (mmol)')
 st.markdown('****')
 
-P_source = st.text_input(label='6. What is the phosphorus source?')
-P_amount = st.slider('7. How much phosphorus source is used? (mmol)', 0, 150, 0)
+P_source = st.text_input(label='6. What is the phosphorus source? (e.g. tris(trimethylsilyl)phosphine, tris(dimethylamino)phenol, etc.)')
+P_amount =  st.text_input(label='7. How much phosphorus source is used? (mmol)')
 st.markdown('****')
 
-Sol_1 = st.text_input(label='8. What is the first solvent?')
-Sol_1_amount = st.slider('9. How much of the first solvent is used? (mL)', 0, 600, 0)
+Sol_1 = st.text_input(label='8. What is the first solvent? (e.g. octadecene, trioctylphosphine, etc.)')
+Sol_1_amount =  st.text_input(label='9. How much of the first solvent is used? (mL)')
 st.markdown('****')
 
-Sol_2 = st.text_input(label='10. What is the second solvent?')
-Sol_2_amount = st.slider('11. How much of the second is used? (mL)', 0, 600, 0)
+Sol_2 = st.text_input(label='10. What is the second solvent? (e.g. octadecene, trioctylphosphine, etc.)')
+Sol_2_amount =  st.text_input(label='11. How much of the second is used? (mL)')
 st.markdown('****')
 
-Amine_source = st.text_input(label='12. What amine is used?')
-Amine_amount = st.slider('13. How much amine is used? (mmol)', 0, 150, 0)
+Amine_source = st.text_input(label='12. What amine is used? (e.g. oleylamine, etc.)')
+Amine_amount =  st.text_input(label='13. How much amine is used? (mmol)')
 st.markdown('****')
 
-Other1 = st.text_input(label='14. Other compound 1')
-Other1_amount = st.text_input(label='15. Amount and unit')
+Other1 = st.text_input(label='14. Other compound 1 (e.g. zinc chloride)')
+Other1_amount = st.text_input(label='15. Amount and unit (e.g. 2.2 mmol)')
 st.markdown('****')
 
-Other2 = st.text_input(label='16. Other compound 2')
-Other2_amount = st.text_input(label='17. Amount and unit')
+Other2 = st.text_input(label='16. Other compound 2 (e.g. zinc chloride)')
+Other2_amount = st.text_input(label='17. Amount and unit (e.g. 2.2 mmol)')
 st.markdown('****')
 
-Temp = st.slider('14. What is the growth temperature? (Celcius)', 30, 400, 200)
+Temp =  st.text_input(label='14. What is the growth temperature? (Celcius)')
 st.markdown('****')
 
 Time = st.text_input(label='15. What is the growth time? (minute)')
 st.markdown('****')
 
 #Outcomes
-Diameter = st.slider('16. What is the reported diameter? (nm)', 0.0, 15.0, 0.0, 0.1)
-Abs = st.slider('17. What is the reported absorbance max? (nm)', 0, 700, 0)
-Emission = st.slider('18. What is the reported emission? (nm)', 0, 700, 0)
-PLQY = st.slider('19. What is the reported quantum yield? (%)', 0, 100, 0)
+Diameter = st.text_input(label='16. What is the reported diameter? (nm)')
+Abs = st.text_input(label='17. What is the reported absorbance max? (nm)')
+Emission = st.text_input(label='18. What is the reported emission? (nm)')
+PLQY = st.text_input(label='19. What is the reported quantum yield? (%)')
 st.markdown('****')
 
 
@@ -152,4 +155,4 @@ st.markdown(href, unsafe_allow_html=True)
 st.write('Please let Hao know if something needs to be fixed.')
 st.write('Thank you!')
 
-st.write('Updated 04/13/2021')
+st.write('Updated 04/14/2021')
