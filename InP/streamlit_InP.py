@@ -11,7 +11,6 @@ from datetime import date
 
 today = date.today()
 
-
 #Title
 st.title('InP Quantum Dots Synthesis Project  - Cossairt Laboratory')
 st.subheader('Department of Chemistry - University of Washington')
@@ -31,7 +30,6 @@ st.markdown('****')
 st.markdown('Please enter EVERYTHING in lowercase!')
 st.markdown('Type "None" if the paper doesn\'t provide the information')
 st.markdown('****')
-
 
 #getting user's doi
 DOI = st.text_input(
@@ -83,7 +81,7 @@ Sol_2_unit = st.text_input(label='11b. What unit? (g or mL)')
 st.markdown('****')
 
 st.subheader('Ligands')
-st.subheader('***If this was already entered as a solvent, please do not re-enter***')
+st.subheader('*If this was already entered as a solvent, please do not re-enter*')
 
 Acid_source = st.text_input(label='4. What acid is used? (e.g. lauric acid, mystiric acid, palmitic acid, etc.)')
 Acid_amount =  st.text_input(label='5. How much acid is used? (mmol)')
@@ -93,6 +91,8 @@ Amine_source = st.text_input(label='12. What amine is used? (e.g. oleylamine, et
 Amine_amount =  st.text_input(label='13. How much amine is used? (mmol)')
 st.markdown('****')
 
+st.subheader('Other reagents')
+
 Other1 = st.text_input(label='14. Other compound 1 (e.g. zinc chloride)')
 Other1_amount = st.text_input(label='15. Amount and unit (e.g. 2.2 mmol)')
 st.markdown('****')
@@ -101,6 +101,8 @@ Other2 = st.text_input(label='16. Other compound 2 (e.g. zinc chloride)')
 Other2_amount = st.text_input(label='17. Amount and unit (e.g. 2.2 mmol)')
 st.markdown('****')
 
+st.subheader('Conditions')
+
 Temp =  st.text_input(label='14. What is the growth temperature? (Celsius)')
 st.markdown('****')
 
@@ -108,6 +110,8 @@ Time = st.text_input(label='15. What is the growth time? (minute)')
 st.markdown('****')
 
 #Outcomes
+st.subheader('Properties')
+
 Diameter = st.text_input(label='16. What is the reported diameter? (nm)')
 Abs = st.text_input(label='17. What is the reported absorbance max? (nm)')
 Emission = st.text_input(label='18. What is the reported emission? (nm)')
