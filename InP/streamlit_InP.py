@@ -13,14 +13,14 @@ today = date.today()
 
 #Title
 st.title('InP Quantum Dots Synthesis Project  - Cossairt Laboratory')
-st.subheader('Department of Chemistry - University of Washington')
+st.header('Department of Chemistry - University of Washington')
 
 #User's name
 User = st.text_input(label='0. What\'s your name?')
 st.markdown('****')
 
 #Text explaining
-st.header('Data Input')
+st.subheader('Data Input')
 st.markdown(
     'In this section, you will input synthetic conditions and some properties of the quantum dots.')
 st.markdown(
@@ -46,12 +46,12 @@ df = pd.read_csv('InP/doi.csv')
 
 st.write('Your DOI:')
 st.write(doi_df)
-if st.button('Check your DOI'):
+if st.button('Click here to check your DOI'):
     if (df['DOI'] == DOI).any():
         st.markdown('**This paper has already been used. Please make sure NOT to repeat entries!**')
     else:
         doi_df.to_csv('InP/doi.csv', mode='a', header=False, index=False)
-        st.markdown('**DOI list is updated**') 
+        st.markdown('**DOI list is updated**')
 
 st.write('Current DOI list:')
 st.write(pd.read_csv('InP/doi.csv'))
