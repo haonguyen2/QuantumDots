@@ -24,12 +24,12 @@ st.header('Data Input')
 st.markdown(
     'In this section, you will input synthetic conditions and some properties of the quantum dots. Some rules before we start:')
 st.markdown('- Please enter EVERYTHING in lowercase!')
-st.markdown('- Please type "None" if the paper doesn\'t provide the information')
+st.markdown('- Please no trailing spaces')
 st.markdown('- Please do not enter any information twice')
+st.markdown('- Please type "None" if the paper doesn\'t provide the information')
 st.markdown('- If there are additional important details in the paper that you do not see a place to enter, please let Hao or Florence know')
 st.markdown('- For numerical entries, please follow the unit in parentheses and ONLY type in the number. You may have to do some calculations')
 st.markdown('****')
-
 
 #getting user's doi
 st.subheader('DOI')
@@ -158,7 +158,6 @@ b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversi
 # href = f'<a href="data:file/csv;base64,{b64}">Download CSV File</a> (right-click and save as &lt;some_name&gt;.csv)'
 href = f'<a href="data:file/csv;base64,{b64}" download="InP_data.csv">Download csv file</a>'
 st.markdown(href, unsafe_allow_html=True)
-
 
 st.write('Please let Hao know if something needs to be fixed.')
 st.write('Thank you!')
