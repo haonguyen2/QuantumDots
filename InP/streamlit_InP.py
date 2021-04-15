@@ -64,6 +64,10 @@ In_source = st.text_input(label='2. What is the indium source? (e.g. indium acet
 In_amount = st.text_input(label='3. How much In source is used? (mmol)')
 st.markdown('****')
 
+Acid_source = st.text_input(label='4. What acid is used? (e.g. lauric acid, mystiric acid, palmitic acid, etc.)')
+Acid_amount =  st.text_input(label='5. How much acid is used? (mmol)')
+st.markdown('****')
+
 P_source = st.text_input(label='6. What is the phosphorus source? (e.g. tris(trimethylsilyl)phosphine, tris(dimethylamino)phenol, etc.)')
 P_amount =  st.text_input(label='7. How much phosphorus source is used? (mmol)')
 st.markdown('****')
@@ -80,12 +84,7 @@ Sol_2_amount =  st.text_input(label='11a. How much of the second is used?')
 Sol_2_unit = st.text_input(label='11b. What unit? (g or mL)')
 st.markdown('****')
 
-st.subheader('Ligands')
-st.subheader('*If this was already entered as a solvent, please do not re-enter*')
-
-Acid_source = st.text_input(label='4. What acid is used? (e.g. lauric acid, mystiric acid, palmitic acid, etc.)')
-Acid_amount =  st.text_input(label='5. How much acid is used? (mmol)')
-st.markdown('****')
+st.subheader('Ligands - If this was already entered as a solvent, please do not re-enter')
 
 Amine_source = st.text_input(label='12. What amine is used? (e.g. oleylamine, etc.)')
 Amine_amount =  st.text_input(label='13. How much amine is used? (mmol)')
@@ -94,11 +93,11 @@ st.markdown('****')
 st.subheader('Other reagents')
 
 Other1 = st.text_input(label='14. Other compound 1 (e.g. zinc chloride)')
-Other1_amount = st.text_input(label='15. Amount and unit (e.g. 2.2 mmol)')
+Other1_amount = st.text_input(label='15. Amount (mmol)')
 st.markdown('****')
 
 Other2 = st.text_input(label='16. Other compound 2 (e.g. zinc chloride)')
-Other2_amount = st.text_input(label='17. Amount and unit (e.g. 2.2 mmol)')
+Other2_amount = st.text_input(label='17. Amount (mmol)')
 st.markdown('****')
 
 st.subheader('Conditions')
