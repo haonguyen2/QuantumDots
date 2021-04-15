@@ -59,27 +59,34 @@ st.write('Current DOI list:')
 st.write(pd.read_csv('InP/doi.csv'))
 
 #Questions for synthetic conditions
-
+st.subheader('Precursors')
 
 st.markdown('****')
 In_source = st.text_input(label='2. What is the indium source? (e.g. indium acetate, indium chloride, etc.)')
 In_amount = st.text_input(label='3. How much In source is used? (mmol)')
 st.markdown('****')
 
-Acid_source = st.text_input(label='4. What acid is used? (e.g. lauric acid, mystiric acid, palmetic acid, etc.)')
-Acid_amount =  st.text_input(label='5. How much acid is used? (mmol)')
-st.markdown('****')
-
 P_source = st.text_input(label='6. What is the phosphorus source? (e.g. tris(trimethylsilyl)phosphine, tris(dimethylamino)phenol, etc.)')
 P_amount =  st.text_input(label='7. How much phosphorus source is used? (mmol)')
 st.markdown('****')
 
+st.subheader('Solvents')
+
 Sol_1 = st.text_input(label='8. What is the first solvent? (e.g. octadecene, trioctylphosphine, etc.)')
-Sol_1_amount =  st.text_input(label='9. How much of the first solvent is used? (mL)')
+Sol_1_amount =  st.text_input(label='9a. How much of the first solvent is used?')
+Sol_1_unit = st.text_input(label='9b. What unit? (g or mL)')
 st.markdown('****')
 
 Sol_2 = st.text_input(label='10. What is the second solvent? (e.g. octadecene, trioctylphosphine, etc.)')
-Sol_2_amount =  st.text_input(label='11. How much of the second is used? (mL)')
+Sol_2_amount =  st.text_input(label='11a. How much of the second is used?')
+Sol_2_unit = st.text_input(label='11b. What unit? (g or mL)')
+st.markdown('****')
+
+st.subheader('Ligands')
+st.subheader('***If this was already entered as a solvent, please do not re-enter***')
+
+Acid_source = st.text_input(label='4. What acid is used? (e.g. lauric acid, mystiric acid, palmitic acid, etc.)')
+Acid_amount =  st.text_input(label='5. How much acid is used? (mmol)')
 st.markdown('****')
 
 Amine_source = st.text_input(label='12. What amine is used? (e.g. oleylamine, etc.)')
@@ -94,7 +101,7 @@ Other2 = st.text_input(label='16. Other compound 2 (e.g. zinc chloride)')
 Other2_amount = st.text_input(label='17. Amount and unit (e.g. 2.2 mmol)')
 st.markdown('****')
 
-Temp =  st.text_input(label='14. What is the growth temperature? (Celcius)')
+Temp =  st.text_input(label='14. What is the growth temperature? (Celsius)')
 st.markdown('****')
 
 Time = st.text_input(label='15. What is the growth time? (minute)')
@@ -107,31 +114,25 @@ Emission = st.text_input(label='18. What is the reported emission? (nm)')
 PLQY = st.text_input(label='19. What is the reported quantum yield? (%)')
 st.markdown('****')
 
-
-
-
 #Converting user's inputs to a datarow
-user_input = [ User, DOI, In_source, In_amount, P_source, P_amount, Sol_1, Sol_1_amount, 
-               Sol_2, Sol_2_amount, Acid_source, Acid_amount, Amine_source, 
-               Amine_amount, Other1, Other1_amount, Other2, Other2_amount, 
-               Temp, Time, Diameter, Abs, Emission, PLQY, today  
+user_input = [ User, DOI, In_source, In_amount, P_source, P_amount, Sol_1, Sol_1_amount, Sol_1_unit,
+               Sol_2, Sol_2_amount, Sol_2_unit, Acid_source, Acid_amount, Amine_source,
+               Amine_amount, Other1, Other1_amount, Other2, Other2_amount,
+               Temp, Time, Diameter, Abs, Emission, PLQY, today
              ]
 
 user_df = pd.DataFrame(np.array(user_input).reshape(1, -1), columns=[
-        'User', 'DOI', 'In_source',	'In_amount_mmol',	'P_source',	'P_amount_mmol',	
-        'First_sol',	'First_sol_amount_mg',	'Second_sol',	'Second_sol_amount_mg',
+        'User', 'DOI', 'In_source',	'In_amount_mmol',	'P_source',	'P_amount_mmol',
+        'First_sol',	'First_sol_amount', 'First_sol_unit',	'Second_sol',	'Second_sol_amount', 'Second_sol_unit',
         'Acid',	'Acid_amount_mmol',	'Amine',	'Amine_amount_mmol',
         'Other_1',	'Other_1_amount_mmol',	'Other_2',	'Other_2_amount_mmol',
-        'Temp_C',	'Time_min',	'diameter_nm',	'Abs_nm',	'Emission_nm',	
+        'Temp_C',	'Time_min',	'diameter_nm',	'Abs_nm',	'Emission_nm',
         'PLQY_percentage', 'Date input'                           ])
-
 
 
 #Print user inputs
 st.write('Double-check your input, maybe?')
 st.write(user_df)
-
-
 
 #Inputing user's input to current InP csv
 st.write('Click submit when you\'re done')
@@ -154,9 +155,7 @@ href = f'<a href="data:file/csv;base64,{b64}" download="InP_data.csv">Download c
 st.markdown(href, unsafe_allow_html=True)
 
 
-
-
 st.write('Please let Hao know if something needs to be fixed.')
 st.write('Thank you!')
 
-st.write('Updated 04/14/2021')
+st.write('Updated 04/15/2021')
