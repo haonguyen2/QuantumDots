@@ -20,21 +20,22 @@ User = st.text_input(label='What\'s your name?')
 st.markdown('****')
 
 #Text explaining
-st.subheader('Data Input')
+st.header('Data Input')
 st.markdown(
-    'In this section, you will input synthetic conditions and some properties of the quantum dots.')
-st.markdown('Some rules before we start:')
-st.markdown('Please enter EVERYTHING in lowercase!')
-st.markdown('Type "None" if the paper doesn\'t provide the information')
-st.markdown('Please do not enter any information twice')
-st.markdown('If there are additional important details in the paper that you do not see a place to enter, please let Hao or Florence know')
-st.markdown('For numerical entries, please follow the unit in parentheses and ONLY type in the number. You may have to do some calculations')
+    'In this section, you will input synthetic conditions and some properties of the quantum dots. Some rules before we start:')
+st.markdown('- Please enter EVERYTHING in lowercase!')
+st.markdown('- Please type "None" if the paper doesn\'t provide the information')
+st.markdown('- Please do not enter any information twice')
+st.markdown('- If there are additional important details in the paper that you do not see a place to enter, please let Hao or Florence know')
+st.markdown('- For numerical entries, please follow the unit in parentheses and ONLY type in the number. You may have to do some calculations')
 st.markdown('****')
 
+
+#getting user's doi
+st.subheader('DOI')
 st.markdown(
     'First, you will need to paste the DOI of the paper you are about to use. Check if someone has already input that paper.')
 
-#getting user's doi
 DOI = st.text_input(
     label='1. Type or paste a DOI name into the text box below. E.g. 10.1000/xyz123')
 
