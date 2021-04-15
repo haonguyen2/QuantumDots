@@ -1,2 +1,0 @@
-User,DOI,In_source,In_amount_mmol,P_source,P_amount_mmol,First_sol,First_sol_amount_mg,Second_sol,Second_sol_amount_mg,Acid,Acid_amount_mmol,Amine,Amine_amount_mmol,Other_1,Other_1_amount_mmol,Other_2,Other_2_amount_mmol,Temp_C,Time_min,diameter_nm,Abs_nm,Emission_nm,PLQY_percentage,Date_input
-Hao,test,in_source,17,psource,12,solvent,15,None,0,acid,19,amine,15,othercompund ,3mg,None,None,199,20,1.6,17,35,15,4/14/2021
