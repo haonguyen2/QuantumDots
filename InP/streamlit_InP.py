@@ -124,7 +124,7 @@ st.markdown('****')
 #Converting user's inputs to a datarow
 user_input = [ User, DOI, In_source, In_amount, P_source, P_amount, Sol_1, Sol_1_amount, Sol_1_unit,
                Sol_2, Sol_2_amount, Sol_2_unit, Acid_source, Acid_amount, Amine_source,
-               Amine_amount, Other1, Other1_amount, Other1_unit, Other2, Other2_amount, Other2_unit
+               Amine_amount, Other1, Other1_amount, Other1_unit, Other2, Other2_amount, Other2_unit,
                Temp, Time, Diameter, Abs, Emission, PLQY, today
              ]
 
