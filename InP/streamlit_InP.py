@@ -79,12 +79,12 @@ st.subheader('Solvents')
 
 Sol_1 = st.text_input(label='8. What is the first solvent? (e.g. octadecene, trioctylphosphine, etc.)')
 Sol_1_amount =  st.text_input(label='9a. How much of the first solvent is used?')
-Sol_1_unit = st.text_input(label='9b. What unit? (g or mL)')
+Sol_1_unit = st.radio(label='9b. What unit?', ('mg', 'mL', 'mmol'))
 st.markdown('****')
 
 Sol_2 = st.text_input(label='10. What is the second solvent? (e.g. octadecene, trioctylphosphine, etc.)')
 Sol_2_amount =  st.text_input(label='11a. How much of the second is used?')
-Sol_2_unit = st.text_input(label='11b. What unit? (g or mL)')
+Sol_2_unit = st.radio(label='11b. What unit?', ('mg', 'mL', 'mmol'))
 st.markdown('****')
 
 st.subheader('Ligands - If this was already entered as a solvent, please do not re-enter')
@@ -96,27 +96,29 @@ st.markdown('****')
 st.subheader('Other reagents')
 
 Other1 = st.text_input(label='14. Other compound 1 (e.g. zinc chloride)')
-Other1_amount = st.text_input(label='15. Amount (mmol)')
+Other1_amount = st.text_input(label='15a. Amount')
+Other1_unit = st.radio(label='15b. What unit?', ('mg', 'mL', 'mmol'))
 st.markdown('****')
 
 Other2 = st.text_input(label='16. Other compound 2 (e.g. zinc chloride)')
-Other2_amount = st.text_input(label='17. Amount (mmol)')
+Other2_amount = st.text_input(label='17a. Amount')
+Other2_unit = st.radio(label='17b. What unit?', ('mg', 'mL', 'mmol'))
 st.markdown('****')
 
 st.subheader('Conditions')
 
-Temp =  st.text_input(label='14. What is the growth temperature? (Celsius)')
+Temp =  st.text_input(label='18. What is the growth temperature? (Celsius)')
 
-Time = st.text_input(label='15. What is the growth time? (minute)')
+Time = st.text_input(label='19. What is the growth time? (minute)')
 st.markdown('****')
 
 #Outcomes
 st.subheader('Properties')
 
-Diameter = st.text_input(label='16. What is the reported diameter? (nm)')
-Abs = st.text_input(label='17. What is the reported absorbance max? (nm)')
-Emission = st.text_input(label='18. What is the reported emission? (nm)')
-PLQY = st.text_input(label='19. What is the reported quantum yield? (%)')
+Diameter = st.text_input(label='20. What is the reported diameter? (nm)')
+Abs = st.text_input(label='21. What is the reported absorbance max? (nm)')
+Emission = st.text_input(label='22. What is the reported emission? (nm)')
+PLQY = st.text_input(label='23. What is the reported quantum yield? (%)')
 st.markdown('****')
 
 #Converting user's inputs to a datarow
@@ -128,11 +130,13 @@ user_input = [ User, DOI, In_source, In_amount, P_source, P_amount, Sol_1, Sol_1
 
 user_df = pd.DataFrame(np.array(user_input).reshape(1, -1), columns=[
         'User', 'DOI', 'In_source',	'In_amount_mmol',	'P_source',	'P_amount_mmol',
-        'First_sol',	'First_sol_amount', 'First_sol_unit',	'Second_sol',	'Second_sol_amount', 'Second_sol_unit',
+        'First_sol',	'First_sol_amount', 'First_sol_unit',
+        'Second_sol',	'Second_sol_amount', 'Second_sol_unit',
         'Acid',	'Acid_amount_mmol',	'Amine',	'Amine_amount_mmol',
-        'Other_1',	'Other_1_amount_mmol',	'Other_2',	'Other_2_amount_mmol',
-        'Temp_C',	'Time_min',	'diameter_nm',	'Abs_nm',	'Emission_nm',
-        'PLQY_percentage', 'Date input'                           ])
+        'Other_1',	'Other_1_amount', 'Other_1_unit',
+        'Other_2',	'Other_2_amount', 'Other_1_unit',
+        'Temp_C', 'Time_min', 'diameter_nm', 'Abs_nm', 'Emission_nm',
+        'PLQY_percentage', 'Date input'                             ])
 
 
 #Print user inputs
@@ -159,7 +163,7 @@ b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversi
 href = f'<a href="data:file/csv;base64,{b64}" download="InP_data.csv">Download csv file</a>'
 st.markdown(href, unsafe_allow_html=True)
 
-st.write('Please let Hao know if something needs to be fixed.')
+
 st.write('Thank you!')
 
-st.write('Updated 04/15/2021')
+st.write('Updated 04/16/2021')
