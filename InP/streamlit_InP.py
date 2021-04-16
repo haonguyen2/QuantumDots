@@ -79,12 +79,12 @@ st.subheader('Solvents')
 
 Sol_1 = st.text_input(label='8. What is the first solvent? (e.g. octadecene, trioctylphosphine, etc.)')
 Sol_1_amount =  st.text_input(label='9a. How much of the first solvent is used?')
-Sol_1_unit = st.radio(label='9b. What unit?', ('mg', 'mL', 'mmol'))
+Sol_1_unit = st.radio('9b. What unit?', ('mg', 'mL', 'mmol'))
 st.markdown('****')
 
 Sol_2 = st.text_input(label='10. What is the second solvent? (e.g. octadecene, trioctylphosphine, etc.)')
 Sol_2_amount =  st.text_input(label='11a. How much of the second is used?')
-Sol_2_unit = st.radio(label='11b. What unit?', ('mg', 'mL', 'mmol'))
+Sol_2_unit = st.radio('11b. What unit?', ('mg', 'mL', 'mmol'))
 st.markdown('****')
 
 st.subheader('Ligands - If this was already entered as a solvent, please do not re-enter')
@@ -97,12 +97,12 @@ st.subheader('Other reagents')
 
 Other1 = st.text_input(label='14. Other compound 1 (e.g. zinc chloride)')
 Other1_amount = st.text_input(label='15a. Amount')
-Other1_unit = st.radio(label='15b. What unit?', ('mg', 'mL', 'mmol'))
+Other1_unit = st.radio('15b. What unit?', ('mg', 'mL', 'mmol'))
 st.markdown('****')
 
 Other2 = st.text_input(label='16. Other compound 2 (e.g. zinc chloride)')
 Other2_amount = st.text_input(label='17a. Amount')
-Other2_unit = st.radio(label='17b. What unit?', ('mg', 'mL', 'mmol'))
+Other2_unit = st.radio('17b. What unit?', ('mg', 'mL', 'mmol'))
 st.markdown('****')
 
 st.subheader('Conditions')
