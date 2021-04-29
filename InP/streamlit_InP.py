@@ -63,77 +63,81 @@ st.markdown('****')
 #Questions for synthetic conditions
 st.subheader('Precursors')
 
-Cluster_source = st.text_input(label='2. Is this a cluster synthesis? If yes, please enter "In37P20". If no, please enter "None"')
+Cluster_source = st.text_input(label='2. Is this a cluster heat-up synthesis? If yes, please enter "In37P20". If no, please enter "None"')
 Cluster_amount = st.text_input(label='3. How much cluster is used? (mmol)')
+Cluster_ligand = st.text_input(label='4. What is the ligand on the cluster? (eg. myristate, oleate)')
+Cluster_ligand_amount = st.text_input(label='5. How much ligand is used? Please multiply the answer in \#3 by 51 (mmol)')
+st.markdown('Please now skip to Solvents') 
 st.markdown('****')
 
-In_source = st.text_input(label='4. What is the indium source? (e.g. indium acetate, indium chloride, etc.)')
-In_amount = st.text_input(label='5. How much In source is used? (mmol)')
+In_source = st.text_input(label='6. What is the indium source? (e.g. indium acetate, indium chloride, etc.)')
+In_amount = st.text_input(label='7. How much In source is used? (mmol)')
 st.markdown('****')
 
-Acid_source = st.text_input(label='6. What acid is used? (e.g. lauric acid, mystiric acid, palmitic acid, etc.)')
-Acid_amount =  st.text_input(label='7. How much acid is used? You may need to do some calculation for cluster synthesis (mmol)')
+Acid_source = st.text_input(label='8. What acid is used? (e.g. lauric acid, mystiric acid, palmitic acid, etc.)')
+Acid_amount =  st.text_input(label='9. How much acid is used? (mmol)')
 st.markdown('****')
 
-P_source = st.text_input(label='8. What is the phosphorus source? (e.g. tris(trimethylsilyl)phosphine, tris(dimethylamino)phenol, etc.)')
-P_amount =  st.text_input(label='9. How much phosphorus source is used? (mmol)')
+P_source = st.text_input(label='10. What is the phosphorus source? (e.g. tris(trimethylsilyl)phosphine, tris(dimethylamino)phenol, etc.)')
+P_amount =  st.text_input(label='11. How much phosphorus source is used? (mmol)')
 st.markdown('****')
 
 st.subheader('Solvents')
 
-Sol_1 = st.text_input(label='10. What is the first solvent? (e.g. octadecene, trioctylphosphine, etc.)')
-Sol_1_amount =  st.text_input(label='11. How much of the first solvent is used?')
-Sol_1_unit = st.radio('12. What unit?', ('mg', 'mL', 'mmol'))
+Sol_1 = st.text_input(label='12. What is the first solvent? (e.g. octadecene, trioctylphosphine, etc.)')
+Sol_1_amount =  st.text_input(label='13. How much of the first solvent is used?')
+Sol_1_unit = st.radio('14. What unit?', ('mg', 'mL', 'mmol'))
 st.markdown('****')
 
-Sol_2 = st.text_input(label='13. What is the second solvent? (e.g. octadecene, trioctylphosphine, etc.)')
-Sol_2_amount =  st.text_input(label='14. How much of the second is used?')
-Sol_2_unit = st.radio('15. What unit?', ('mg', 'mL', 'mmol'))
+Sol_2 = st.text_input(label='15. What is the second solvent? (e.g. octadecene, trioctylphosphine, etc.)')
+Sol_2_amount =  st.text_input(label='16. How much of the second is used?')
+Sol_2_unit = st.radio('17. What unit?', ('mg', 'mL', 'mmol'))
 st.markdown('****')
 
 st.subheader('Ligands - If this was already entered as a solvent, please do not re-enter')
 
-Amine_source = st.text_input(label='16. What amine is used? (e.g. oleylamine, etc.)')
-Amine_amount =  st.text_input(label='17. How much amine is used? (mmol)')
+Amine_source = st.text_input(label='18. What amine is used? (e.g. oleylamine, etc.)')
+Amine_amount =  st.text_input(label='19. How much amine is used? (mmol)')
 st.markdown('****')
 
 st.subheader('Other reagents')
 
-Other1 = st.text_input(label='18. Other compound 1 (e.g. zinc chloride)')
-Other1_amount = st.text_input(label='19. Amount')
-Other1_unit = st.radio('20. What unit?', ('mg', 'mL', 'mmol'))
+Other1 = st.text_input(label='20. Other compound 1 (e.g. zinc chloride)')
+Other1_amount = st.text_input(label='21. Amount')
+Other1_unit = st.radio('22. What unit?', ('mg', 'mL', 'mmol'))
 st.markdown('****')
 
-Other2 = st.text_input(label='21. Other compound 2 (e.g. zinc chloride)')
-Other2_amount = st.text_input(label='22. Amount')
-Other2_unit = st.radio('23. What unit?', ('mg', 'mL', 'mmol'))
+Other2 = st.text_input(label='23. Other compound 2 (e.g. zinc chloride)')
+Other2_amount = st.text_input(label='24. Amount')
+Other2_unit = st.radio('25. What unit?', ('mg', 'mL', 'mmol'))
 st.markdown('****')
 
 st.subheader('Conditions')
 
-Temp =  st.text_input(label='24. What is the growth temperature? (Celsius)')
+Temp =  st.text_input(label='26. What is the growth temperature? (Celsius)')
 
-Time = st.text_input(label='25. What is the growth time? (minute)')
+Time = st.text_input(label='27. What is the growth time? (minute)')
 st.markdown('****')
 
 #Outcomes
 st.subheader('Properties')
 
-Diameter = st.text_input(label='26. What is the reported diameter? (nm)')
-Abs = st.text_input(label='27. What is the reported absorbance max? (nm)')
-Emission = st.text_input(label='28. What is the reported emission? (nm)')
-PLQY = st.text_input(label='29. What is the reported quantum yield? (%)')
+Diameter = st.text_input(label='28. What is the reported diameter? (nm)')
+Abs = st.text_input(label='29. What is the reported absorbance max? (nm)')
+Emission = st.text_input(label='30. What is the reported emission? (nm)')
+PLQY = st.text_input(label='31. What is the reported quantum yield? (%)')
 st.markdown('****')
 
 #Converting user's inputs to a datarow
-user_input = [ User, DOI, Cluster_source, Cluster_amount, In_source, In_amount, P_source, P_amount, Sol_1, Sol_1_amount, Sol_1_unit,
+user_input = [ User, DOI, Cluster_source, Cluster_amount, Cluster_ligand, Cluster_ligand_amount, In_source, In_amount, P_source, P_amount, Sol_1, Sol_1_amount, Sol_1_unit,
                Sol_2, Sol_2_amount, Sol_2_unit, Acid_source, Acid_amount, Amine_source,
                Amine_amount, Other1, Other1_amount, Other1_unit, Other2, Other2_amount, Other2_unit,
                Temp, Time, Diameter, Abs, Emission, PLQY, today
              ]
 
 user_df = pd.DataFrame(np.array(user_input).reshape(1, -1), columns=[
-        'User', 'DOI', 'Cluster_source', 'Cluster_amount_mmol', 'In_source',	'In_amount_mmol',	'P_source',	'P_amount_mmol',
+        'User', 'DOI', 'Cluster_source', 'Cluster_amount_mmol', 'Cluster_ligand', 'Cluster_ligand_amount_mmol',
+	'In_source',	'In_amount_mmol',	'P_source',	'P_amount_mmol',
         'First_sol',	'First_sol_amount', 'First_sol_unit',
         'Second_sol',	'Second_sol_amount', 'Second_sol_unit',
         'Acid',	'Acid_amount_mmol',	'Amine',	'Amine_amount_mmol',
