@@ -86,12 +86,12 @@ st.subheader('Solvents')
 
 Sol_1 = st.text_input(label='12. What is the first solvent? (e.g. octadecene, trioctylphosphine, etc.)')
 Sol_1_amount =  st.text_input(label='13. How much of the first solvent is used?')
-Sol_1_unit = st.radio('14. What unit?', ('mg', 'mL', 'mmol'))
+Sol_1_unit = st.radio('14. What unit?', ('g', 'mL', 'mmol'))
 st.markdown('****')
 
 Sol_2 = st.text_input(label='15. What is the second solvent? (e.g. octadecene, trioctylphosphine, etc.)')
 Sol_2_amount =  st.text_input(label='16. How much of the second is used?')
-Sol_2_unit = st.radio('17. What unit?', ('mg', 'mL', 'mmol'))
+Sol_2_unit = st.radio('17. What unit?', ('g', 'mL', 'mmol'))
 st.markdown('****')
 
 st.subheader('Ligands')
@@ -136,7 +136,7 @@ user_input = [ User, DOI, Cluster_source, Cluster_amount, Cluster_ligand, Cluste
              ]
 
 user_df = pd.DataFrame(np.array(user_input).reshape(1, -1), columns=[
-        'User', 'DOI', 'Cluster_source', 'Cluster_amount_mmol', 'Cluster_ligand', 'Cluster_ligand_amount_mmol',
+        'User', 'DOI', 'Cluster_source', 'Cluster_amount_mmol', 'Cluster_ligand', 'Cluster_ligand_mmol',
 	'In_source',	'In_amount_mmol',	'P_source',	'P_amount_mmol',
         'First_sol',	'First_sol_amount', 'First_sol_unit',
         'Second_sol',	'Second_sol_amount', 'Second_sol_unit',
