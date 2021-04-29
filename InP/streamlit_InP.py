@@ -22,7 +22,7 @@ st.markdown('****')
 #Text explaining
 st.header('Data Input')
 st.markdown(
-    'In this section, you will input synthetic conditions and some properties of the quantum dots. Some rules before we start:')
+    'In this section, you will input synthetic conditions and some properties of the quantum dots. **Please strictly follow these rules for data entry:**')
 st.markdown('- Please enter EVERYTHING in lowercase!')
 st.markdown('- Please no trailing spaces')
 st.markdown('- Please do not enter any information twice')
@@ -67,7 +67,7 @@ Cluster_source = st.text_input(label='2. Is this a cluster heat-up synthesis? If
 Cluster_amount = st.text_input(label='3. How much cluster is used? (mmol)')
 Cluster_ligand = st.text_input(label='4. What is the ligand on the cluster? (eg. myristate, oleate)')
 Cluster_ligand_amount = st.text_input(label='5. How much ligand is used? Please multiply the answer in #3 by 51 (mmol)')
-st.markdown('If this was a cluster synthesis, please now skip to Solvents')
+st.markdown('If this was a cluster synthesis, the remaining precursor entries should be "None"')
 st.markdown('****')
 
 In_source = st.text_input(label='6. What is the indium source? (e.g. indium acetate, indium chloride, etc.)')
@@ -94,7 +94,7 @@ Sol_2_amount =  st.text_input(label='16. How much of the second is used?')
 Sol_2_unit = st.radio('17. What unit?', ('mg', 'mL', 'mmol'))
 st.markdown('****')
 
-st.subheader('Ligands - If this was already entered as a solvent, please do not re-enter')
+st.subheader('Ligands')
 
 Amine_source = st.text_input(label='18. What amine is used? (e.g. oleylamine, etc.)')
 Amine_amount =  st.text_input(label='19. How much amine is used? (mmol)')
