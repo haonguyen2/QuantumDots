@@ -67,7 +67,7 @@ Cluster_source = st.text_input(label='2. Is this a cluster heat-up synthesis? If
 Cluster_amount = st.text_input(label='3. How much cluster is used? (mmol)')
 Cluster_ligand = st.text_input(label='4. What is the ligand on the cluster? (eg. myristate, oleate)')
 Cluster_ligand_amount = st.text_input(label='5. How much ligand is used? Please multiply the answer in #3 by 51 (mmol)')
-st.markdown('If this was a cluster synthesis, the remaining precursor entries should be "None"')
+st.markdown('If this was a cluster synthesis, please treat the remaining precursor questions as those *other than the cluster*')
 st.markdown('****')
 
 In_source = st.text_input(label='6. What is the indium source? (e.g. indium acetate, indium chloride, etc.)')
