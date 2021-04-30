@@ -96,8 +96,8 @@ st.markdown('****')
 
 st.subheader('Ligands')
 
-Amine_source = st.text_input(label='18. What amine is used? (e.g. oleylamine, etc.)')
-Amine_amount =  st.text_input(label='19. How much amine is used? (mmol)')
+Ligand_source = st.text_input(label='18. Any ligand used in addition to acid source or solvent? (eg. amine, thiol)')
+Ligand_amount =  st.text_input(label='19. How much ligand is used? (mmol)')
 st.markdown('****')
 
 st.subheader('Other reagents')
@@ -114,25 +114,30 @@ st.markdown('****')
 
 st.subheader('Conditions')
 
-Temp =  st.text_input(label='26. What is the growth temperature? (Celsius)')
+Air_free = st.text_input(label='26. Is this an air-free synthesis? (Yes/No)')
 
-Time = st.text_input(label='27. What is the growth time? (minute)')
+Temp =  st.text_input(label='27. What is the growth temperature? (Celsius)')
+
+Time = st.text_input(label='28. What is the growth time? (minute)')
 st.markdown('****')
+
+Workup_solvent = st.text_input(label='29. What is the workup solvent?')
+Workup_anti = st.text_input(label='30. What is the workup anti-solvent?')
 
 #Outcomes
 st.subheader('Properties')
 
-Diameter = st.text_input(label='28. What is the reported diameter? (nm)')
-Abs = st.text_input(label='29. What is the reported absorbance max? (nm)')
-Emission = st.text_input(label='30. What is the reported emission? (nm)')
-PLQY = st.text_input(label='31. What is the reported quantum yield? (%)')
+Diameter = st.text_input(label='31. What is the reported diameter? (nm)')
+Abs = st.text_input(label='32. What is the reported absorbance max? (nm)')
+Emission = st.text_input(label='33. What is the reported emission? (nm)')
+PLQY = st.text_input(label='34. What is the reported quantum yield? (%)')
 st.markdown('****')
 
 #Converting user's inputs to a datarow
 user_input = [ User, DOI, Cluster_source, Cluster_amount, Cluster_ligand, Cluster_ligand_amount, In_source, In_amount, P_source, P_amount, Sol_1, Sol_1_amount, Sol_1_unit,
-               Sol_2, Sol_2_amount, Sol_2_unit, Acid_source, Acid_amount, Amine_source,
-               Amine_amount, Other1, Other1_amount, Other1_unit, Other2, Other2_amount, Other2_unit,
-               Temp, Time, Diameter, Abs, Emission, PLQY, today
+               Sol_2, Sol_2_amount, Sol_2_unit, Acid_source, Acid_amount, Ligand_source,
+               Ligand_amount, Other1, Other1_amount, Other1_unit, Other2, Other2_amount, Other2_unit,
+               Air_free, Temp, Time, Workup_solvent, Workup_anti, Diameter, Abs, Emission, PLQY, today
              ]
 
 user_df = pd.DataFrame(np.array(user_input).reshape(1, -1), columns=[
@@ -140,10 +145,10 @@ user_df = pd.DataFrame(np.array(user_input).reshape(1, -1), columns=[
 	'In_source',	'In_amount_mmol',	'P_source',	'P_amount_mmol',
         'First_sol',	'First_sol_amount', 'First_sol_unit',
         'Second_sol',	'Second_sol_amount', 'Second_sol_unit',
-        'Acid',	'Acid_amount_mmol',	'Amine',	'Amine_amount_mmol',
+        'Acid',	'Acid_amount_mmol',	'Other ligand',	'Other_ligand_mmol',
         'Other_1',	'Other_1_amount', 'Other_1_unit',
-        'Other_2',	'Other_2_amount', 'Other_1_unit',
-        'Temp_C', 'Time_min', 'diameter_nm', 'Abs_nm', 'Emission_nm',
+        'Other_2',	'Other_2_amount', 'Other_1_unit', 'Air_free',
+	'Temp_C', 'Time_min', 'Workup_solvent', 'Workup_antisolvent', 'diameter_nm', 'Abs_nm', 'Emission_nm',
         'PLQY_percentage', 'Date input'                             ])
 
 
