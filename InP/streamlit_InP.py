@@ -123,7 +123,7 @@ st.subheader('Conditions')
 
 Air_free = st.text_input(label='26. Is this an air-free synthesis? (Yes/No)')
 
-Temp = st.number_input(label='27. What is the growth temperature? (Celsius)' value=0.0)
+Temp = st.number_input(label='27. What is the growth temperature? (Celsius)', value=0.0)
 
 Time = st.number_input(label='28. What is the growth time? (minute)', value=0.0)
 
