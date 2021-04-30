@@ -63,7 +63,13 @@ st.markdown('****')
 #Questions for synthetic conditions
 st.subheader('Precursors')
 
-Cluster_source = st.text_input(label='2. Is this a cluster heat-up synthesis? If yes, please enter "In37P20". If no, please enter "None"')
+Cluster = st.radio('2. Is this a cluster heat-up synthesis?', ('Yes', 'No'))
+
+if Cluster == 'Yes':
+    Cluster_source == "In37P20"
+else:
+    Cluster_source == "None"
+
 Cluster_amount = st.text_input(label='3. How much cluster is used? (mmol)')
 Cluster_ligand = st.text_input(label='4. What is the ligand on the cluster? (eg. myristate, oleate)')
 Cluster_ligand_amount = st.text_input(label='5. How much ligand is used? Please multiply the answer in #3 by 51 (mmol)')
@@ -133,23 +139,40 @@ PLQY = st.text_input(label='34. What is the reported quantum yield? (%)')
 st.markdown('****')
 
 #Converting user's inputs to a datarow
-user_input = [ User, DOI, Cluster_source, Cluster_amount, Cluster_ligand, Cluster_ligand_amount,
-		In_source, In_amount, P_source, P_amount, Sol_1, Sol_1_amount, Sol_1_unit,
-               Sol_2, Sol_2_amount, Sol_2_unit, Acid_source, Acid_amount, Ligand_source,
-               Ligand_amount, Other1, Other1_amount, Other1_unit, Other2, Other2_amount, Other2_unit,
-               Air_free, Temp, Time, Workup_solvent, Workup_anti, Diameter, Abs, Emission, PLQY, today
+user_input = [ User, DOI, 
+               Cluster_source, Cluster_amount, 
+               Cluster_ligand, Cluster_ligand_amount,
+               In_source, In_amount, 
+               P_source, P_amount, 
+               Sol_1, Sol_1_amount, Sol_1_unit,
+               Sol_2, Sol_2_amount, Sol_2_unit, 
+               Acid_source, Acid_amount, 
+               Ligand_source, Ligand_amount, 
+               Other1, Other1_amount, Other1_unit, 
+               Other2, Other2_amount, Other2_unit,
+               Air_free, Temp, Time, 
+               Workup_solvent, Workup_anti, 
+               Diameter, Abs, Emission, 
+               PLQY, today
              ]
 
 user_df = pd.DataFrame(np.array(user_input).reshape(1, -1), columns=[
-        'User', 'DOI', 'Cluster source', 'Cluster amount (mmol)', 'Cluster ligand', 'Cluster ligand (mmol)',
-	'In source',	'In (mmol)',	'P source',	'P (mmol)',
+        'User', 'DOI', 
+        'Cluster source', 'Cluster amount (mmol)', 
+        'Cluster ligand', 'Cluster ligand (mmol)',
+        'In source',	'In (mmol)',
+        'P source',	'P (mmol)',
         'First solvent',	'First sol amount', 'First sol unit',
         'Second solvent',	'Second sol amount', 'Second sol unit',
-        'Acid source',	'Acid (mmol)',	'Other ligand',	'Other ligand (mmol)',
+        'Acid source',	'Acid (mmol)',
+        'Other ligand',	'Other ligand (mmol)',
         'Other1',	'Other1 amount', 'Other1 unit',
-        'Other2',	'Other2 amount', 'Other2 unit', 'Airfree?',
-	'Temp (C)', 'Time (min)', 'Workup solvent', 'Workup antisolvent', 'diameter (nm)', 'Absorbance (nm)', 'Emission (nm)',
-        'PLQY (%)', 'Date input'                             ])
+        'Other2',	'Other2 amount', 'Other2 unit',
+        'Airfree?', 'Temp (C)', 'Time (min)', 
+        'Workup solvent', 'Workup antisolvent', 
+        'diameter (nm)', 'Absorbance (nm)', 'Emission (nm)',
+        'PLQY (%)', 'Date input'                             
+        ])
 
 
 #Print user inputs
