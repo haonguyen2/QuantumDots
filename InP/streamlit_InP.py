@@ -147,7 +147,7 @@ user_df = pd.DataFrame(np.array(user_input).reshape(1, -1), columns=[
         'Second solvent',	'Second sol amount', 'Second sol unit',
         'Acid source',	'Acid (mmol)',	'Other ligand',	'Other ligand (mmol)',
         'Other1',	'Other1 amount', 'Other1 unit',
-        'Other2',	'Other2 amount', 'Other1 unit', 'Airfree?',
+        'Other2',	'Other2 amount', 'Other2 unit', 'Airfree?',
 	'Temp (C)', 'Time (min)', 'Workup solvent', 'Workup antisolvent', 'diameter (nm)', 'Absorbance (nm)', 'Emission (nm)',
         'PLQY (%)', 'Date input'                             ])
 
