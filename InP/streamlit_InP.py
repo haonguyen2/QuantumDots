@@ -119,7 +119,6 @@ Air_free = st.text_input(label='26. Is this an air-free synthesis? (Yes/No)')
 Temp =  st.text_input(label='27. What is the growth temperature? (Celsius)')
 
 Time = st.text_input(label='28. What is the growth time? (minute)')
-st.markdown('****')
 
 Workup_solvent = st.text_input(label='29. What is the workup solvent?')
 Workup_anti = st.text_input(label='30. What is the workup anti-solvent?')
@@ -141,15 +140,15 @@ user_input = [ User, DOI, Cluster_source, Cluster_amount, Cluster_ligand, Cluste
              ]
 
 user_df = pd.DataFrame(np.array(user_input).reshape(1, -1), columns=[
-        'User', 'DOI', 'Cluster_source', 'Cluster_amount_mmol', 'Cluster_ligand', 'Cluster_ligand_mmol',
-	'In_source',	'In_amount_mmol',	'P_source',	'P_amount_mmol',
-        'First_sol',	'First_sol_amount', 'First_sol_unit',
-        'Second_sol',	'Second_sol_amount', 'Second_sol_unit',
-        'Acid',	'Acid_amount_mmol',	'Other ligand',	'Other_ligand_mmol',
-        'Other_1',	'Other_1_amount', 'Other_1_unit',
-        'Other_2',	'Other_2_amount', 'Other_1_unit', 'Air_free',
-	'Temp_C', 'Time_min', 'Workup_solvent', 'Workup_antisolvent', 'diameter_nm', 'Abs_nm', 'Emission_nm',
-        'PLQY_percentage', 'Date input'                             ])
+        'User', 'DOI', 'Cluster source', 'Cluster amount (mmol)', 'Cluster ligand', 'Cluster ligand (mmol)',
+	'In source',	'In (mmol)',	'P source',	'P (mmol)',
+        'First solvent',	'First sol amount', 'First sol unit',
+        'Second solvent',	'Second sol amount', 'Second sol unit',
+        'Acid source',	'Acid (mmol)',	'Other ligand',	'Other ligand (mmol)',
+        'Other1',	'Other1 amount', 'Other1 unit',
+        'Other2',	'Other2 amount', 'Other1 unit', 'Airfree?',
+	'Temp (C)', 'Time (min)', 'Workup solvent', 'Workup antisolvent', 'diameter (nm)', 'Absorbance (nm)', 'Emission (nm)',
+        'PLQY (%)', 'Date input'                             ])
 
 
 #Print user inputs
@@ -179,4 +178,4 @@ st.markdown(href, unsafe_allow_html=True)
 
 st.write('Thank you!')
 
-st.write('Updated 04/29/2021')
+st.write('Updated 04/30/2021')
