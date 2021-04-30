@@ -66,9 +66,9 @@ st.subheader('Precursors')
 Cluster = st.radio('2. Is this a cluster heat-up synthesis?', ('Yes', 'No'))
 
 if Cluster == 'Yes':
-    Cluster_source == "In37P20"
+    Cluster_source = "In37P20"
 else:
-    Cluster_source == "None"
+    Cluster_source = "None"
 
 Cluster_amount = st.text_input(label='3. How much cluster is used? (mmol)')
 Cluster_ligand = st.text_input(label='4. What is the ligand on the cluster? (eg. myristate, oleate)')
