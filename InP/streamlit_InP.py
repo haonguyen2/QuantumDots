@@ -126,14 +126,15 @@ Workup_anti = st.text_input(label='30. What is the workup anti-solvent?')
 #Outcomes
 st.subheader('Properties')
 
-Diameter = st.text_input(label='31. What is the reported diameter? (nm)')
+Diameter = st.text_input(label='31. What is the reported **TEM** diameter? (nm)')
 Abs = st.text_input(label='32. What is the reported absorbance max? (nm)')
 Emission = st.text_input(label='33. What is the reported emission? (nm)')
 PLQY = st.text_input(label='34. What is the reported quantum yield? (%)')
 st.markdown('****')
 
 #Converting user's inputs to a datarow
-user_input = [ User, DOI, Cluster_source, Cluster_amount, Cluster_ligand, Cluster_ligand_amount, In_source, In_amount, P_source, P_amount, Sol_1, Sol_1_amount, Sol_1_unit,
+user_input = [ User, DOI, Cluster_source, Cluster_amount, Cluster_ligand, Cluster_ligand_amount,
+		In_source, In_amount, P_source, P_amount, Sol_1, Sol_1_amount, Sol_1_unit,
                Sol_2, Sol_2_amount, Sol_2_unit, Acid_source, Acid_amount, Ligand_source,
                Ligand_amount, Other1, Other1_amount, Other1_unit, Other2, Other2_amount, Other2_unit,
                Air_free, Temp, Time, Workup_solvent, Workup_anti, Diameter, Abs, Emission, PLQY, today
