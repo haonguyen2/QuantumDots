@@ -70,7 +70,7 @@ if Cluster == 'Yes':
 else:
     Cluster_source = "None"
 
-Cluster_amount = st.number_input(label='3. How much cluster is used? (mmol)', value=1.0)
+Cluster_amount = st.number_input(label='3. How much cluster is used? (mmol)', value=0.0)
 Cluster_ligand = st.text_input(label='4. What is the ligand on the cluster? (eg. myristate, oleate)')
 Cluster_ligand_amount = Cluster_amount*51
 
@@ -78,44 +78,44 @@ st.markdown('If this was a cluster synthesis, please treat the remaining precurs
 st.markdown('****')
 
 In_source = st.text_input(label='6. What is the indium source? (e.g. indium acetate, indium chloride, etc.)')
-In_amount = st.text_input(label='7. How much In source is used? (mmol)')
+In_amount = st.number_input(label='7. How much In source is used? (mmol)', value=0.0)
 st.markdown('****')
 
 Acid_source = st.text_input(label='8. What acid is used? (e.g. lauric acid, mystiric acid, palmitic acid, etc.)')
-Acid_amount =  st.text_input(label='9. How much acid is used? (mmol)')
+Acid_amount = st.number_input(label='9. How much acid is used? (mmol)', value=0.0)
 st.markdown('****')
 
 P_source = st.text_input(label='10. What is the phosphorus source? (e.g. tris(trimethylsilyl)phosphine, tris(dimethylamino)phenol, etc.)')
-P_amount =  st.text_input(label='11. How much phosphorus source is used? (mmol)')
+P_amount = st.number_input(label='11. How much phosphorus source is used? (mmol)', value=0.0)
 st.markdown('****')
 
 st.subheader('Solvents')
 
 Sol_1 = st.text_input(label='12. What is the first solvent? (e.g. octadecene, trioctylphosphine, etc.)')
-Sol_1_amount =  st.text_input(label='13. How much of the first solvent is used?')
+Sol_1_amount = st.number_input(label='13. How much of the first solvent is used?', value=0.0)
 Sol_1_unit = st.radio('14. What unit?', ('None', 'g', 'mL', 'mmol'))
 st.markdown('****')
 
 Sol_2 = st.text_input(label='15. What is the second solvent? (e.g. octadecene, trioctylphosphine, etc.)')
-Sol_2_amount =  st.text_input(label='16. How much of the second is used?')
+Sol_2_amount = st.number_input(label='16. How much of the second is used?', value=0.0)
 Sol_2_unit = st.radio('17. What unit?', ('None', 'g', 'mL', 'mmol'))
 st.markdown('****')
 
 st.subheader('Ligands')
 
 Ligand_source = st.text_input(label='18. Any ligand used in addition to acid source or solvent? (eg. amine, thiol)')
-Ligand_amount =  st.text_input(label='19. How much ligand is used? (mmol)')
+Ligand_amount = st.number_input(label='19. How much ligand is used? (mmol)', value=0.0)
 st.markdown('****')
 
 st.subheader('Other reagents')
 
 Other1 = st.text_input(label='20. Other compound 1 (e.g. zinc chloride)')
-Other1_amount = st.text_input(label='21. Amount')
+Other1_amount = st.number_input(label='21. Amount', value=0.0)
 Other1_unit = st.radio('22. What unit?', ('None', 'mg', 'mL', 'mmol'))
 st.markdown('****')
 
 Other2 = st.text_input(label='23. Other compound 2 (e.g. zinc chloride)')
-Other2_amount = st.text_input(label='24. Amount')
+Other2_amount = st.number_input(label='24. Amount', value=0.0)
 Other2_unit = st.radio('25. What unit?', ('None', 'mg', 'mL', 'mmol'))
 st.markdown('****')
 
@@ -123,9 +123,9 @@ st.subheader('Conditions')
 
 Air_free = st.text_input(label='26. Is this an air-free synthesis? (Yes/No)')
 
-Temp =  st.text_input(label='27. What is the growth temperature? (Celsius)')
+Temp = st.number_input(label='27. What is the growth temperature? (Celsius)' value=0.0)
 
-Time = st.text_input(label='28. What is the growth time? (minute)')
+Time = st.number_input(label='28. What is the growth time? (minute)', value=0.0)
 
 Workup_solvent = st.text_input(label='29. What is the workup solvent?')
 Workup_anti = st.text_input(label='30. What is the workup anti-solvent?')
