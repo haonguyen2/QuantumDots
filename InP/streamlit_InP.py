@@ -72,7 +72,8 @@ else:
 
 Cluster_amount = st.text_input(label='3. How much cluster is used? (mmol)')
 Cluster_ligand = st.text_input(label='4. What is the ligand on the cluster? (eg. myristate, oleate)')
-Cluster_ligand_amount = st.text_input(label='5. How much ligand is used? Please multiply the answer in #3 by 51 (mmol)')
+Cluster_ligand_amount = float(Cluster_amount)*51
+
 st.markdown('If this was a cluster synthesis, please treat the remaining precursor questions as those *other than the cluster*')
 st.markdown('****')
 
