@@ -3,7 +3,6 @@
 This is where the user interface is made using the streamlit package.
 """
 
-import joblib
 import numpy as np
 import pandas as pd
 import streamlit as st
@@ -20,7 +19,6 @@ st.write('Answer the questions below about your InP quandum dots synthesis and w
 st.markdown('****')
 
 
-
 # Creating indium question
 
 In = st.radio(
@@ -28,7 +26,7 @@ In = st.radio(
                 ('indium acetate', 
                 'indium bromide', 
                 'indium chloride', 'indium iodide',
-                'indium myristate, 'chloroindium oxalate', 
+                'indium myristate', 'chloroindium oxalate', 
                 'indium oxalate', 'indium palmitate', 
                 'indium trifluoroacetate'))
 
@@ -64,7 +62,7 @@ sol = st.radio(
                 'dimethylformamide - DMF',))
 
 sol_amount = st.number_input(label='How much noncoordinating solvent is used in mL? (mL)', value=0.00)
-if sol = 'None':
+if sol == 'None':
     sol_amount = 0.00
 
 # Creating TOP question
@@ -75,7 +73,7 @@ TOP = st.radio(
                 'Yes',))
 
 TOP_amount = st.number_input(label='If yes, how much? (mL)', value=0.00)
-if TOP = 'No':
+if TOP == 'No':
     TOP = "None"
     TOP_amount = 0.00
 
@@ -94,7 +92,7 @@ acid = st.radio(
 
 acid_amount = st.number_input(label='How much acid is used in mmol? (mmol)', value=0.00)
 
-if acid = 'None':
+if acid == 'None':
     acid_amount = 0.00
 st.markdown('****')
 
@@ -107,7 +105,7 @@ amine = st.radio(
                 'dioctylamine'))
 
 amine_amount = st.number_input(label='7. How much amine is used in mmol? (mmol)', value=0.00)
-if amine = 'None':
+if amine == 'None':
     amine_amount = 0.00
 st.markdown('****')
 
@@ -118,7 +116,7 @@ thiol = st.radio(
                 'dodecanethiol'))
 
 thiol_amount = st.number_input(label='How much thiol is used? (mmol)', value=0.00)
-if thiol = 'None':
+if thiol == 'None':
     thiol_amount = 0.00
 st.markdown('****')
 
@@ -137,7 +135,7 @@ zinc = st.radio(
                 'zinc undecylenate'))
 
 zinc_amount = st.number_input(label='How much zinc is used? (mmol)', value=0.00)
-if thiol = 'None':
+if thiol == 'None':
     thiol_amount = 0.00
 st.markdown('****')
 
@@ -150,7 +148,7 @@ other = st.radio(
                 'copper bromide'))
 
 other_amount = st.number_input(label='How much in mmol? (mmol)', value=0.00)
-if other = 'None':
+if other == 'None':
     other_amount = 0.00
 st.markdown('****')
 
@@ -196,10 +194,36 @@ user_df = pd.DataFrame(np.array(user_input).reshape(1, -1), columns=['in_source'
 st.write(user_df)
 
 #Scaling and encoding user input using the raw dataset
-df = pd.read_csv('CdSe/CdSe_BetterthanRaw.csv')
+df = pd.read_csv('hao_dataset.csv')
+#Separate out initial DataFrame into the input features and output features
+df_input = df.drop(columns =['diameter_nm', 'abs_nm', 'emission_nm','doi','user','date_input'], inplace = False, axis = 1)
+df_output = df[['diameter_nm', 'abs_nm', 'emission_nm']]
+
+df_input['temp_c'] = df_input['temp_c'].astype(float)
+input_num_cols = [col for col in df_input.columns if df[col].dtypes !='O']
+input_cat_cols = [col for col in df_input.columns if df[col].dtypes =='O']
+
+ct = ColumnTransformer([
+    ('step1', StandardScaler(), input_num_cols),
+    ('step2', OneHotEncoder(sparse=False, handle_unknown='ignore'), input_cat_cols)
+], remainder = 'passthrough')
+
+ct.fit_transform(df_input)
 
 
+#Use same column transformer on user input
+X = ct.transform(user_df)
 
+
+load_Extra_Trees = joblib.load('model_MO_ExtraTrees.joblib')
+predicted = load_Extra_Trees.predict(X)
+st.markdown('****')
+st.markdown('****')
+
+
+st.write('Predicted diameter is', round(predicted[0, 0], 3))
+st.write('Predicted absorbance max is', round(predicted[0, 1], 3))
+st.write('Predicted emission is', round(predicted[0, 2], 3))
 
 
 st.subheader('Updated 09/06/2021')
