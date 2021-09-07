@@ -2,13 +2,14 @@
 """
 This is where the user interface is made using the streamlit package.
 """
-
+import joblib
 import numpy as np
 import pandas as pd
 import streamlit as st
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 
+st.set_page_config(layout="wide")
 
 st.title('InP Quantum Dots Synthesis  - Cossairt Laboratory')
 
@@ -18,144 +19,191 @@ st.markdown('****')
 st.write('Answer the questions below about your InP quandum dots synthesis and we will predict the diameter, absorbance max, and emission wavelength of your dots.')
 st.markdown('****')
 
+row1_1, row1_2 = st.beta_columns(2)
 
-# Creating indium question
+with row1_1:
+    st.subheader("Indium precursor")
+    
+    # Creating indium question
 
-In = st.radio(
-                "What is the indium source?",
-                ('indium acetate', 
-                'indium bromide', 
-                'indium chloride', 'indium iodide',
-                'indium myristate', 'chloroindium oxalate', 
-                'indium oxalate', 'indium palmitate', 
-                'indium trifluoroacetate'))
+    In = st.radio(
+                    "What is the indium source?",
+                    ('indium acetate', 
+                    'indium bromide', 
+                    'indium chloride', 'indium iodide',
+                    'indium myristate', 'chloroindium oxalate', 
+                    'indium oxalate', 'indium palmitate', 
+                    'indium trifluoroacetate'))
 
-In_amount = st.number_input(label='How much In source is used in mmol? (mmol)', value=0.00)
+    In_amount = st.number_input(label='How much In source is used in mmol? (mmol)', value=0.00)
+
+
+with row1_2:
+    st.subheader("Phosphorus precursor")
+
+    # Creating phosphorus question
+
+    P = st.radio(
+                    "What is the phosphorus source?",
+                    ('tris(trimethylsilyl)phosphine - P(TMS)3',
+                    'tris(dimethylamino)phosphine - P(NMe2)3',
+                    'tris(diethylamino)phosphine - P(NEt2)3',
+                    'bis(trimethylsilyl)phosphine'
+                    'phosphine gas',
+                    'phosphorus trichloride',
+                    'white phosphorus',
+                    'sodium phosphide',))
+    st.markdown("######")
+    st.markdown("##")
+
+
+    P_amount = st.number_input(label='How much P source is used in mmol? (mmol)', value=0.00)
+
+
 st.markdown('****')
 
 
-# Creating phosphorus question
+st.subheader("Solvents and ligands")
 
-P = st.radio(
-                "What is the phosphorus source?",
-                ('tris(trimethylsilyl)phosphine - P(TMS)3',
-                'tris(dimethylamino)phosphine - P(NMe2)3',
-                'tris(diethylamino)phosphine - P(NEt2)3',
-                'bis(trimethylsilyl)phosphine'
-                'phosphine gas',
-                'phosphorus trichloride',
-                'white phosphorus',
-                'sodium phosphide',))
-
-P_amount = st.number_input(label='How much P source is used in mmol? (mmol)', value=0.00)
-st.markdown('****')
+row2_1, row2_2, row2_3, row2_4, row2_5 = st.beta_columns(5)
 
 
+with row2_1:
 
-# Creating solvent question
-sol = st.radio(
-                "What is the non-coordinating solvent?",
-                ('None',
-                'octadecene - ODE',
-                'toluene',
-                'mesitylene'
-                'dimethylformamide - DMF',))
+    # Creating solvent question
+    sol = st.radio(
+                    "What is the non-coordinating solvent?",
+                    ('None',
+                    'octadecene - ODE',
+                    'toluene',
+                    'mesitylene',
+                    'dimethylformamide - DMF',))
 
-sol_amount = st.number_input(label='How much noncoordinating solvent is used in mL? (mL)', value=0.00)
-if sol == 'None':
-    sol_amount = 0.00
+    sol_amount = st.number_input(label='How much noncoordinating solvent is used in mL? (mL)', value=0.00)
+    if sol == 'None':
+        sol_amount = 0.00
+
+with row2_2:
 
 # Creating TOP question
 
-TOP = st.radio(
-                "Do you add trioctylphosphine?",
-                ('No',
-                'Yes',))
+    TOP = st.radio(
+                    "Do you add trioctylphosphine?",
+                    ('No',
+                    'Yes',))
+    st.markdown('###')
+    st.markdown('###')
+    st.markdown('###')
 
-TOP_amount = st.number_input(label='If yes, how much? (mL)', value=0.00)
-if TOP == 'No':
-    TOP = "None"
-    TOP_amount = 0.00
+    TOP_amount = st.number_input(label='If yes, how much? (mmol)', value=0.00)
+    if TOP == 'No':
+        TOP = "None"
+        TOP_amount = 0.00
 
+with row2_3:
+
+    # Creating acid question
+    acid = st.radio(
+                    "Do you add any acid?",
+                    ('None',
+                    'stearic acid',
+                    'myristic acid',
+                    'oleic acid',
+                    'palmitic acid',))
+    st.markdown('####')
+
+    acid_amount = st.number_input(label='How much acid is used in mmol? (mmol)', value=0.00)
+
+    if acid == 'None':
+        acid_amount = 0.00
+
+with row2_4:
+
+    # Creating amine question
+    amine = st.radio(
+                    "Do you add any amine?",
+                    ('None',
+                    'octylamine',
+                    'hexadecylamine',
+                    'dioctylamine'))
+    st.markdown('#')
+
+
+    amine_amount = st.number_input(label='How much amine is used in mmol? (mmol)', value=0.00)
+    if amine == 'None':
+        amine_amount = 0.00
+
+with row2_5:
+
+    # Creating thiol question
+    thiol = st.radio(
+                    "Do you add any thiol?",
+                    ('None',
+                    'dodecanethiol'))
+    st.markdown('###')
+    st.markdown('###')
+    st.markdown('######')
+    st.markdown('######')
+    thiol_amount = st.number_input(label='How much thiol is used? (mmol)', value=0.00)
+    if thiol == 'None':
+        thiol_amount = 0.00
 
 st.markdown('****')
 
 
-# Creating acid question
-acid = st.radio(
-                "Do you add any acid?",
-                ('None',
-                'stearic acid',
-                'myristic acid',
-                'oleic acid'
-                'palmitic acid',))
+st.subheader("Additives")
+row3_1, row3_2 = st.beta_columns(2)
+with row3_1:
+    # Creating zinc question
+    zinc = st.radio(
+                    "Do you add any zinc?",
+                    ('None',
+                    'zinc chloride',
+                    'zinc bromide',
+                    'zinc iodide',
+                    'zinc acetate',
+                    'zinc octanoate',
+                    'zinc oleate',
+                    'zinc stearate'))
 
-acid_amount = st.number_input(label='How much acid is used in mmol? (mmol)', value=0.00)
+    zinc_amount = st.number_input(label='How much zinc is used? (mmol)', value=0.00)
+    if zinc == 'None':
+        zinc_amount = 0.00
 
-if acid == 'None':
-    acid_amount = 0.00
-st.markdown('****')
-
-# Creating amine question
-amine = st.radio(
-                "Do you add any amine?",
-                ('None',
-                'octylamine',
-                'hexadecylamine',
-                'dioctylamine'))
-
-amine_amount = st.number_input(label='7. How much amine is used in mmol? (mmol)', value=0.00)
-if amine == 'None':
-    amine_amount = 0.00
-st.markdown('****')
-
-# Creating thiol question
-thiol = st.radio(
-                "Do you add any thiol?",
-                ('None',
-                'dodecanethiol'))
-
-thiol_amount = st.number_input(label='How much thiol is used? (mmol)', value=0.00)
-if thiol == 'None':
-    thiol_amount = 0.00
-st.markdown('****')
-
-
-# Creating zinc question
-zinc = st.radio(
-                "Do you add any zinc?",
-                ('None',
-                'zinc chloride',
-                'zinc bromide',
-                'zinc iodide',
-                'zinc acetate',
-                'zinc octanoate',
-                'zinc oleate',
-                'zinc stearate',
-                'zinc undecylenate'))
-
-zinc_amount = st.number_input(label='How much zinc is used? (mmol)', value=0.00)
-if thiol == 'None':
-    thiol_amount = 0.00
-st.markdown('****')
-
+with row3_2:
 # Other
-other = st.radio(
-                "Do you add any other compound?",
-                ('None',
-                'trioctylphosphine oxide',
-                'superhydride',
-                'copper bromide'))
+    other = st.radio(
+                    "Do you add any other compound?",
+                    ('None',
+                    'trioctylphosphine oxide',
+                    'superhydride',
+                    'copper bromide',
+                    'tetrabutylammonium myristate'))
 
-other_amount = st.number_input(label='How much in mmol? (mmol)', value=0.00)
-if other == 'None':
-    other_amount = 0.00
+    st.markdown('###')
+    st.markdown('###')
+    st.markdown('#####')
+
+    other_amount = st.number_input(label='How much in mmol? (mmol)', value=0.00)
+    if other == 'None':
+        other_amount = 0.00
 st.markdown('****')
 
-# Reaction volume
-vol = st.number_input(label='What is the total volume of the reaction? (mL)', value=0.00)
-temp = st.number_input(label='What is the nucleation temperature? (C)', value=0.00)
-time = st.number_input(label='What is the reaction time (min)?', value=0.0)
+
+st.subheader("Reaction Conditions")
+row4_1, row4_2, row4_3 = st.beta_columns(3)
+
+with row4_1:
+    # Reaction volume
+    vol = st.number_input(label='What is the total volume of the reaction? (mL)', value=0.00)
+
+with row4_2:
+    # Reaction temperature
+    temp = st.number_input(label='What is the nucleation temperature? (C)', value=0.0)
+
+with row4_3:
+    # Reaction time
+    time = st.number_input(label='What is the reaction time (min)?', value=0.0)
 
 
 
@@ -191,6 +239,8 @@ user_df = pd.DataFrame(np.array(user_input).reshape(1, -1), columns=['in_source'
                                                                     'temp_c',
                                                                     'time_min'             ])
 #Print user inputs
+
+st.subheader("Check your input")
 st.write(user_df)
 
 #Scaling and encoding user input using the raw dataset
@@ -218,12 +268,18 @@ X = ct.transform(user_df)
 load_Extra_Trees = joblib.load('model_MO_ExtraTrees.joblib')
 predicted = load_Extra_Trees.predict(X)
 st.markdown('****')
-st.markdown('****')
+
+col1, col2, col3, col4, col5 = st.beta_columns([1,1,1,1,1])
+with col3:
+    predict = st.button('PREDICT')
 
 
-st.write('Predicted diameter is', round(predicted[0, 0], 3))
-st.write('Predicted absorbance max is', round(predicted[0, 1], 3))
-st.write('Predicted emission is', round(predicted[0, 2], 3))
+c1, c2, c3 =  st.beta_columns([1,1,1])
+if predict:
+    with c2:
+        st.write('Predicted diameter is', round(predicted[0, 0], 3))
+        st.write('Predicted absorbance max is', round(predicted[0, 1], 3))
+        st.write('Predicted emission is', round(predicted[0, 2], 3))
 
 
 st.subheader('Updated 09/06/2021')
